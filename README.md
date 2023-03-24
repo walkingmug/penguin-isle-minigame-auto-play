@@ -1,0 +1,1 @@
+# penguin-isle-minigame-auto-play

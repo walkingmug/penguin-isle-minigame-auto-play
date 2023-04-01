@@ -2,35 +2,39 @@ import cv2
 
 
 click_counter = 0
-click_coords = {'X1': None, 'Y1': None, 'X2': None, 'Y2': None}
+x1 = None
+y1 = None
+x2 = None
+y2 = None
 
 
 def click_event(event, x, y, flags, params):
+    """Checks for left mouse clicks and stops after two clicks
+
+    :param event: _description_
+    :param x: _description_
+    :param y: _description_
+    :param flags: _description_
+    :param params: _description_
+    """
     global click_counter
-    global click_coords
+    global x1, y1, x2, y2
 
     # Get click coordinates and stop after two clicks
     if event == cv2.EVENT_LBUTTONDOWN:      
         click_counter += 1
         if click_counter == 1:
-            click_coords.update({'X1': x, 'Y1': y})
+            x1 = x
+            y1 = y
         else:
-            click_coords.update({'X2': x, 'Y2': y})
+            x2 = x
+            y2 = y
             cv2.destroyAllWindows()
-        
-        print(click_coords)
-    
-
-
-      # put coordinates as text on the image
-    #   font = cv2.FONT_HERSHEY_SIMPLEX
-    #   cv2.putText(img, str(x) + ',' + str(y), (x,y), font, 1, (255, 0, 0), 2)
-      
-    #   # show the updated image
-    #   cv2.imshow('image', img)
 
 
 def get_markings():
+    """Lets the user input two marks on the image.
+    """
     # Read and display the image
     img = cv2.imread("temp\screenshots\screenshot.png")
     cv2.imshow('image', img)
@@ -44,6 +48,4 @@ def get_markings():
     # close the window
     cv2.destroyAllWindows()
 
-    # # Calculate the distance between markings
-    # distance = ((int(x2) - int(x1))**2 + (int(y2) - int(y1))**2)**0.5
-    # print(f"The distance between the marks is {distance} pixels.")
+    return x1, y1, x2, y2

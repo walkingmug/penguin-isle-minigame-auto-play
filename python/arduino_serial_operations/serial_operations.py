@@ -15,3 +15,14 @@ class ArduinoSerial:
 
     def write_to_serial(self, text: str):
         self.ser.write(text.encode('utf-8'))
+
+    def _move_servo_down(self):
+        self.write_to_serial("ServoDown")
+
+    def _move_servo_up(self):
+        self.write_to_serial("ServoUp")
+
+    def move_servo(self, duration: float):
+        self._move_servo_down()
+        time.sleep(duration)
+        self._move_servo_up

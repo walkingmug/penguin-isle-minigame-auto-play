@@ -6,7 +6,7 @@ import time
 from PIL import ImageGrab
 
 
-def get_image_from_software(window_name="Zoom - Google Chrome"):
+def get_image_from_software(window_name="Zoom - Google Chrome") -> None:
     """Takes a screenshot from a software window and saves it.
 
     :raises ValueError: if the window is not found

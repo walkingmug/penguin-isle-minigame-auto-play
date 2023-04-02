@@ -8,7 +8,7 @@ x2 = None
 y2 = None
 
 
-def click_event(event, x, y, flags, params):
+def click_event(event, x, y, flags, params) -> None:
     """Checks for left mouse clicks and stops after two clicks
 
     :param event: _description_
@@ -32,7 +32,7 @@ def click_event(event, x, y, flags, params):
             cv2.destroyAllWindows()
 
 
-def get_markings():
+def get_markings() -> int:
     """Lets the user input two marks on the image.
     """
     # Read and display the image

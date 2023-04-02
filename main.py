@@ -2,7 +2,6 @@ from python.image_input.get_image_from_software import get_image_from_software
 from python.image_input.get_markings import get_markings
 from python.distance_calculator.calculate_distance import get_distance_in_pixels
 from python.distance_calculator.convert_distance import get_push_duration_from_distance
-from python.arduino_serial_operations.serial_operations import Serial
 from python.arduino_serial_operations.serial_operations import ArduinoSerial
 
 
@@ -22,6 +21,7 @@ def main() -> None:
     # perform movement on the servo
     servo = ArduinoSerial()
     servo.move_servo(push_duration)
+
 
 if __name__=="__main__":
     main()

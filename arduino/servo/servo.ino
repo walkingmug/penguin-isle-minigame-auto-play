@@ -9,8 +9,8 @@ void setup(){
 
 void loop(){
   if (Serial.available() > 0){
-    incomingByte = Serial.read(); // read the incoming byte
+    int incomingByte = Serial.read(); // read the incoming byte
     Serial.print("Received: ");
-    Serial.println(incomingByte);`
+    Serial.println(incomingByte);
   }
 }

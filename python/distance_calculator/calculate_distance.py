@@ -1,4 +1,4 @@
-def get_distance_in_pixels(x1, y1, x2, y2):
+def get_distance_in_pixels(x1, y1, x2, y2) -> float:
     """Calculates the pixel distance between two marks in an image.
 
     :param x1: X-value of mark 1.

@@ -13,16 +13,14 @@ class ArduinoSerial:
     def set_baud_rate(self, baud_rate: int):
         self.ser.baudrate = baud_rate
 
-    def write_to_serial(self, text: str):
-        self.ser.write(text.encode('utf-8'))
-
     def _move_servo_down(self):
-        self.write_to_serial("ServoDown")
+        self.ser.write(b'1')
 
     def _move_servo_up(self):
-        self.write_to_serial("ServoUp")
+        self.ser.write(b'0')
 
     def move_servo(self, duration: float):
         self._move_servo_down()
+        print(duration)
         time.sleep(duration)
-        self._move_servo_up
+        self._move_servo_up()

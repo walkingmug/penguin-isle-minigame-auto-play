@@ -5,6 +5,6 @@ def get_push_duration_from_distance(pixel_distance) -> float:
     :param pixel_distance: number of pixels between the two image marks
     :return: push duration in seconds for the servo to push
     """
-    push_duration = pixel_distance/100
+    push_duration = pixel_distance/100/2
 
     return push_duration

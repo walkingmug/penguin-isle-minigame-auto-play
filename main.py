@@ -7,7 +7,7 @@ from python.arduino_serial_operations.serial_operations import ArduinoSerial
 
 def main() -> None:
     # save a screenshot image from a given software
-    # get_image_from_software("Zoom - Google Chrome")
+    get_image_from_software("Zoom - Google Chrome")
 
     # set the marks by clicking on the image
     x1, y1, x2, y2 = get_markings()

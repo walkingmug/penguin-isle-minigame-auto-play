@@ -15,7 +15,7 @@ void loop(){
   if (Serial.available() > 0){
     int incomingString = Serial.read(); // read the incoming string
     if (incomingString == '1'){
-      myservo.write(90);
+      myservo.write(100);
       digitalWrite(greenLedPin, HIGH);
       digitalWrite(redLedPin, LOW);
     }

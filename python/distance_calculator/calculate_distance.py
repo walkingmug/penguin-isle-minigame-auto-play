@@ -10,5 +10,3 @@ def get_distance_in_pixels(x1, y1, x2, y2):
     # get coordinates of marks
     distance = ((int(x2) - int(x1))**2 + (int(y2) - int(y1))**2)**0.5
     return distance
-
-get_distance_in_pixels(157, 364, 278, 252)

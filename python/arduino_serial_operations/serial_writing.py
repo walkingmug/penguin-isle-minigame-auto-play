@@ -3,5 +3,5 @@ import serial
 import time
 
 
-def write_to_serial():
-    ser = initialize_serial()
+def write_to_serial(ser):
+    ser.write()

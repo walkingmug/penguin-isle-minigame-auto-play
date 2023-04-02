@@ -9,8 +9,12 @@ void setup(){
 
 void loop(){
   if (Serial.available() > 0){
-    int incomingByte = Serial.read(); // read the incoming byte
-    Serial.print("Received: ");
-    Serial.println(incomingByte);
+    String incomingString = Serial.readString(); // read the incoming string
+    if (incomingString == "ServoDown"){
+      myservo.write(90);
+    }
+    else if (incomingString == "ServoUp"){
+      myservo.write(0);
+    }
   }
 }

@@ -1,10 +1,10 @@
-import serial
+from serial import Serial
 import time
 
 
-class Serial:
-    def __init__(self, port='COM3', baud_rate=9600):
-        self.ser = serial.Serial(port, baud_rate)
+class ArduinoSerial:
+    def __init__(self):
+        self.ser = Serial(port='COM3', baudrate=9600)
         time.sleep(2)
 
     def set_port(self, port: str):

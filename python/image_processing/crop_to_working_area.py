@@ -54,5 +54,6 @@ def crop_image_to_working_area() -> np.array:
     :return: A cropped image of the working area.
     """
     screenshare = get_screenshare()
+    working_area = get_working_area(screenshare)
 
-    return get_working_area(screenshare)
+    return working_area

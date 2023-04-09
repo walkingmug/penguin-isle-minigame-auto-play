@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from crop_to_working_area import crop_image_to_working_area
 
+
 def perform_morphological_operations(edges: np.array):
     # perform dilation to complete circles
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (4,4))

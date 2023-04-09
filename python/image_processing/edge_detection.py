@@ -3,7 +3,7 @@ import numpy as np
 from crop_to_working_area import crop_image_to_working_area
 
 
-def edge_detection() -> np.array:
+def get_edges_from_image() -> np.array:
     """Performs Canny edge detection on an image.
 
     :return: A b&w image with the edges in white and background in black.
@@ -21,9 +21,7 @@ def edge_detection() -> np.array:
     # find edges with Canny
     edges = cv2.Canny(img, t_lower, t_upper)
     
-    # show result
-    # cv2.imshow("edges", edges)
-    # cv2.waitKey(0)
+    # save result
+    # cv2.imwrite("temp/screenshots/edge.jpg", edges)
 
     return edges
-

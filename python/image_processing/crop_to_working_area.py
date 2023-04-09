@@ -46,3 +46,13 @@ def get_screenshare() -> np.array:
     # cv2.imwrite("temp/screenshots/green_box_cropped.jpg", crop)
 
     return crop_of_screenshare
+
+
+def crop_image_to_working_area() -> np.array:
+    """Extracts the working area from a screenshot.
+
+    :return: A cropped image of the working area.
+    """
+    screenshare = get_screenshare()
+
+    return get_working_area(screenshare)

@@ -46,6 +46,3 @@ def get_screenshare() -> np.array:
     # cv2.imwrite("temp/screenshots/green_box_cropped.jpg", crop)
 
     return crop_of_screenshare
-
-i = get_screenshare()
-get_working_area(i)

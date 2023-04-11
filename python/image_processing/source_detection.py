@@ -1,10 +1,9 @@
 from edge_detection import get_edges_from_image
-from crop_to_working_area import crop_image_to_working_area
 import cv2
 import numpy as np
 
 
-def get_center_of_destination_iceberg():
+def get_center_of_source_iceberg():
     img = get_edges_from_image()
 
     # set up the SimpleBlobDetector with default parameters
@@ -14,46 +13,35 @@ def get_center_of_destination_iceberg():
     params.minThreshold = 244
     params.maxThreshold = 255
 
-    # set the area filter
-    params.filterByArea = True
-    params.minArea = 100
-    params.maxArea = 100000
-
-    # set the circularity filter (circular edges)
-    params.filterByCircularity = False
-    params.minCircularity = 0.01
-    params.maxCircularity = 1
-
     # set the convexity filter (interruption of the shape)
+    # take a lower convexity to account for the shape interruption by the character
     params.filterByConvexity = True
-    params.minConvexity = 0.9
-    params.maxConvexity = 1
+    params.minConvexity = 0.7
+    params.maxConvexity = 0.8
 
-    # set the inertia filter (ellipticity)
-    params.filterByInertia = False
-    params.minInertiaRatio = 0.2
-    params.maxInertiaRatio = 1
-
-    # Create a detector with the parameters
+    # create a detector with the parameters
     detector = cv2.SimpleBlobDetector_create(params)
 
-    # Detect blobs
+    # detect blobs
     keypoints = detector.detect(img)
 
-    # Draw detected blobs as red circles
-    img_with_keypoints = cv2.drawKeypoints(img, keypoints, np.array([]), (0, 0, 255),
-                                           cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    # stop the execution if no destination was detected
+    tot_destinations = len(keypoints)
+    assert tot_destinations != 0, f"Expected 1 or more sources, but {tot_destinations} were given."
 
-    # Draw the center of the circle
-    center
-    for keypoint in keypoints:
-        x, y = int(keypoint.pt[0]), int(keypoint.pt[1])
-        cv2.circle(img_with_keypoints, (x, y), 2, (0, 255, 0), -1)
-        center = [x, y]
-    
-    # Show the image with detected blobs
-    # cv2.imshow("Blobs", img_with_keypoints)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    # assume the bigger blob is the surface of the iceberg
+    if len(keypoints) > 1:
+        max_area = 0
+        max_keypoint = None
+        for kp in keypoints:
+            area = kp.size ** 2 * 3.14159265
+            if area > max_area:
+                max_area = area
+                max_keypoint = kp
+    else:
+        max_keypoint = keypoints
 
-    return center
+    # get the center of the circle (x, y)
+    center = [int(max_keypoint.pt[0]), int(max_keypoint.pt[1])]
+
+    return max_keypoint, center

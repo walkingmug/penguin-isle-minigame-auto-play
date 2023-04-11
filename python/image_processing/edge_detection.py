@@ -31,7 +31,7 @@ def get_edges_from_image() -> np.array:
 
     # perform dilation to complete circles
     edges = perform_morphological_operations(edges)
-    
+
     # save result
     # cv2.imwrite("temp/screenshots/edge.jpg", edges)
 

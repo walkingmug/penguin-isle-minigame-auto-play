@@ -2,7 +2,6 @@ from edge_detection import get_edges_from_image
 import cv2
 import numpy as np
 
-
 def get_center_of_destination_iceberg():
     img = get_edges_from_image()
 
@@ -31,12 +30,9 @@ def get_center_of_destination_iceberg():
 
     # stop the execution if more than one destination was detected
     tot_destinations = len(keypoints)
-    assert tot_destinations == 1, f"There should be exactly one destination, {tot_destinations} were given."
+    assert tot_destinations == 1, f"Expected exactly 1 destination, but {tot_destinations} were given."
 
     # get the center of the circle (x, y)
     center = [int(keypoints[0].pt[0]), int(keypoints[0].pt[1])]
 
-    return center
-
-
-get_center_of_destination_iceberg()
+    return keypoints, center

@@ -1,8 +1,12 @@
 from edge_detection import get_edges_from_image
 import cv2
-import numpy as np
+ 
 
 def get_center_of_destination_iceberg():
+    """Finds the iceberg in the game where the character needs to travel.
+
+    :return: The keypoint of the character, and the center position of it.
+    """
     img = get_edges_from_image()
 
     # set up the SimpleBlobDetector with default parameters

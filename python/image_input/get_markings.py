@@ -1,4 +1,5 @@
 import cv2
+from python.image_processing.crop_to_working_area import crop_image_to_working_area
 
 
 click_counter = 0
@@ -36,16 +37,18 @@ def get_markings() -> int:
     """Lets the user input two marks on the image.
     """
     # Read and display the image
-    img = cv2.imread("temp\screenshots\screenshot.png")
+    img = crop_image_to_working_area()
     cv2.imshow('image', img)
 
     # Read the markings
     cv2.setMouseCallback('image', click_event)
 
+    cv2.circle(img, center=(x1,y1), radius=50, color=(0, 255, 0), thickness=-1)
+
     # wait for a key to be pressed to exit
     cv2.waitKey(0)
-  
-    # close the window
     cv2.destroyAllWindows()
 
     return x1, y1, x2, y2
+
+get_markings()

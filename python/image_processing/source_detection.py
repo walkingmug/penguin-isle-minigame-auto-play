@@ -1,4 +1,4 @@
-from edge_detection import get_edges_from_image
+from python.image_processing.edge_detection import get_edges_from_image
 import cv2
 
 

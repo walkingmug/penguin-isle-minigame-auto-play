@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
-from edge_detection import get_edges_from_image
-from source_detection import get_center_of_source_iceberg
-from destination_detection import get_center_of_destination_iceberg
+from python.image_processing.edge_detection import get_edges_from_image
+from python.image_processing.source_detection import get_center_of_source_iceberg
+from python.image_processing.destination_detection import get_center_of_destination_iceberg
 
 
 def draw_source_and_destination(src_img: np.array, src_kpts, src_center: list,

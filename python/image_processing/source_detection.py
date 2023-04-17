@@ -1,4 +1,5 @@
 from python.image_processing.edge_detection import get_edges_from_image
+from python.image_input.get_markings import get_markings
 import cv2
 
 
@@ -28,10 +29,6 @@ def get_center_of_source_iceberg():
     # detect blobs
     keypoints = detector.detect(img)
 
-    # stop the execution if no destination was detected
-    tot_destinations = len(keypoints)
-    assert tot_destinations != 0, f"Expected 1 or more sources, but {tot_destinations} were given."
-
     # assume the bigger blob is the surface of the iceberg
     if len(keypoints) > 1:
         max_area = 0
@@ -44,7 +41,12 @@ def get_center_of_source_iceberg():
     else:
         max_keypoint = keypoints
 
-    # get the center of the circle (x, y)
-    center = [int(max_keypoint.pt[0]), int(max_keypoint.pt[1])]
+    # manually mark source center if it couldn't be found
+    if len(keypoints) < 1:
+        x1, y1, _, _ = get_markings(mark_src=True)
+        center = [x1, y1]
+    else:
+        # get the center of the circle (x, y)
+        center = [int(max_keypoint.pt[0]), int(max_keypoint.pt[1])]
 
     return max_keypoint, center

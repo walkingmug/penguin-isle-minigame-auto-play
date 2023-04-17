@@ -9,16 +9,20 @@ def main() -> None:
     pass
     # save a screenshot image from a given software
     # get_image_from_software("Zoom - Google Chrome")
+    while True:
+        choice = input('Press Q to Quit:')
+        if choice == "Q" or choice == "q":
+            break
+        
+        # set the marks by clicking on the image
+        x1, y1, x2, y2 = get_markings()
 
-    # set the marks by clicking on the image
-    # x1, y1, x2, y2 = get_markings()
+        # calculate the distance between the two marks
+        distance_between_marks = get_distance_in_pixels(x1, y1, x2, y2)
 
-    # calculate the distance between the two marks
-    # distance_between_marks = get_distance_in_pixels(x1, y1, x2, y2)
-
-    # convert the distance to seconds
-    #push_duration = get_push_duration_from_distance(distance_between_marks)
-
+        # convert the distance to seconds
+        push_duration = get_push_duration_from_distance(distance_between_marks)
+        print(push_duration)
     # perform movement on the servo
     # servo = ArduinoSerial()
     # servo.move_servo(push_duration)

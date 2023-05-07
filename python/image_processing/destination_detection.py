@@ -33,11 +33,13 @@ def get_center_of_destination_iceberg():
     # detect blobs
     keypoints = detector.detect(img)
 
-    # manually mark destination center if it couldn't be found
+    # manually mark destination center if itis not found
     if len(keypoints) != 1:
-        x1, y1, _, _ = get_markings(mark_dest=True)
-        center = [x1, y1]
+        _, _, x2, y2 = get_markings(mark_dest=True)
+        center = [x2, y2]
     else:
-        center = [int(keypoints[0].pt[0]), int(keypoints[0].pt[1])]
+        # center = [int(keypoints[0].pt[0]), int(keypoints[0].pt[1])]
+        x2 = int(keypoints[0].pt[0])
+        y2 = int(keypoints[0].pt[1])
 
-    return keypoints, center
+    return x2, y2

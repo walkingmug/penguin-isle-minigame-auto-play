@@ -29,8 +29,13 @@ def get_center_of_source_iceberg():
     # detect blobs
     keypoints = detector.detect(img)
 
+    # manually mark source center if it is not found
+    if len(keypoints) < 1:
+        x1, y1, _, _ = get_markings(mark_src=True)
+        center = [x1, y1]
+    
     # assume the bigger blob is the surface of the iceberg
-    if len(keypoints) > 1:
+    elif len(keypoints) > 1:
         max_area = 0
         max_keypoint = None
         for kp in keypoints:
@@ -38,15 +43,18 @@ def get_center_of_source_iceberg():
             if area > max_area:
                 max_area = area
                 max_keypoint = kp
-    else:
+    elif len(keypoints) == 1:
         max_keypoint = keypoints
+
 
     # manually mark source center if it couldn't be found
     if len(keypoints) < 1:
         x1, y1, _, _ = get_markings(mark_src=True)
-        center = [x1, y1]
+        center = [x1, y1] 
     else:
         # get the center of the circle (x, y)
-        center = [int(max_keypoint.pt[0]), int(max_keypoint.pt[1])]
+        # center = [int(max_keypoint.pt[0]), int(max_keypoint.pt[1])]
+        x1 = int(max_keypoint.pt[0])
+        y1 = int(max_keypoint.pt[1])
 
-    return max_keypoint, center
+    return x1, y1

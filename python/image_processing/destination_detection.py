@@ -3,12 +3,12 @@ from python.image_input.get_markings import get_markings
 import cv2
  
 
-def get_center_of_destination_iceberg():
+def get_center_of_destination_iceberg(edges_img=None):
     """Finds the iceberg in the game where the character needs to travel.
 
     :return: The keypoint of the character, and the center position of it.
     """
-    img = get_edges_from_image()
+    img = edges_img if edges_img != None else get_edges_from_image()
 
     # set up the SimpleBlobDetector with default parameters
     params = cv2.SimpleBlobDetector_Params()

@@ -3,12 +3,12 @@ from python.image_input.get_markings import get_markings
 import cv2
 
 
-def get_center_of_source_iceberg(edges_img=None):
+def get_center_of_source_iceberg(cropped_img):
     """Finds the iceberg in the game where the character currently is.
 
     :return: The keypoint of the character, and the center position of it.
     """
-    img = edges_img if edges_img != None else get_edges_from_image()
+    img = get_edges_from_image(cropped_img)
 
     # set up the SimpleBlobDetector with default parameters
     params = cv2.SimpleBlobDetector_Params()

@@ -11,13 +11,13 @@ def perform_morphological_operations(edges: np.array):
     return edges
 
 
-def get_edges_from_image() -> np.array:
+def get_edges_from_image(cropped_img=None) -> np.array:
     """Performs Canny edge detection on an image.
 
     :return: A b&w image with the edges in white and background in black.
     """
     # get image
-    img = crop_image_to_working_area()
+    img = cropped_img if cropped_img != None else crop_image_to_working_area()
 
     # convert image to grayscale
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

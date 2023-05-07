@@ -50,10 +50,7 @@ def get_center_of_source_iceberg():
     # manually mark source center if it couldn't be found
     if len(keypoints) < 1:
         x1, y1, _, _ = get_markings(mark_src=True)
-        center = [x1, y1] 
     else:
-        # get the center of the circle (x, y)
-        # center = [int(max_keypoint.pt[0]), int(max_keypoint.pt[1])]
         x1 = int(max_keypoint.pt[0])
         y1 = int(max_keypoint.pt[1])
 

@@ -5,6 +5,13 @@ from python.distance_calculator.convert_distance import get_push_duration_from_d
 from python.arduino_serial_operations.serial_operations import ArduinoSerial
 from python.image_processing.source_detection import get_center_of_source_iceberg
 from python.image_processing.destination_detection import get_center_of_destination_iceberg
+import cv2
+
+
+def show_img(x: int, y: int):
+    img_with_keypoints = cv2.circle(
+        img_with_keypoints, center=(x,y), radius=2, color=(0, 0, 255), thickness=-1)
+
 
 
 def main() -> None:
@@ -19,7 +26,7 @@ def main() -> None:
         # if it cannot be detected, manually ask the user to input them
         x1, y1 = get_center_of_source_iceberg()
         x2, y2 = get_center_of_destination_iceberg()
-
+        
         # calculate the distance between the two marks
         distance_between_marks = get_distance_in_pixels(x1, y1, x2, y2)
 

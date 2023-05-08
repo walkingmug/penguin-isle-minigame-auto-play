@@ -1,3 +1,7 @@
+"""Functions for converting pixel distance to expected seconds.
+"""
+
+
 def get_push_duration_from_distance(pixel_distance) -> float:
     """Converts the pixel distance (Euclidean) between two points into seconds.
 

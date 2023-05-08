@@ -14,7 +14,7 @@ class ImageDisplayGUI:
         self.canvas = tk.Canvas(
             self.root, width=self.current_image.width, height=self.current_image.height)
         self.canvas.pack()
-        self.canvas.create_image(0, 0, anchor=tk.NW, current_image=self.photo)
+        self.canvas.create_image(0, 0, anchor=tk.NW, image=self.photo)
 
         self.root.mainloop()
 a = ImageDisplayGUI()

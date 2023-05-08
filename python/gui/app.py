@@ -13,6 +13,10 @@ class ImageDisplayGUI:
         self.root = tk.Tk()
         self.root.title("Jump Jump Auto Player")
         self.image_path = image_path
+        self.radiobutton_choice = tk.IntVar()
+
+        self._add_auto_radiobutton()
+        self._add_manual_radiobutton()
 
         self.current_image = Image.open(self.image_path)
         self.photo = ImageTk.PhotoImage(self.current_image)
@@ -25,11 +29,23 @@ class ImageDisplayGUI:
         self.root.mainloop()
 
     def set_image(self, img: np.array):
-
-
+        pass
 
     def read_image(self, img_path: str):
-        return imread(img_path)    
+        return imread(img_path)
+
+    def _add_auto_radiobutton(self):
+        auto_radiobutton = tk.Radiobutton(
+            self.root, text="Auto", variable=self.radiobutton_choice, value=1)
+        auto_radiobutton.pack(side="right", anchor=tk.N)
+
+    def _add_manual_radiobutton(self):
+        manual_radiobutton = tk.Radiobutton(
+            self.root, text="Manual", variable=self.radiobutton_choice, value=2)
+        manual_radiobutton.pack(side="right", anchor=tk.N)
+
+    def get_radiobutton_choice(self):
+        return self.radiobutton_choice
 
 
 a = ImageDisplayGUI()

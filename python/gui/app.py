@@ -1,11 +1,11 @@
 import tkinter as tk
 import numpy as np
 from PIL import Image, ImageTk
-
+from cv2 import imread
 
 CANVAS_WIDTH = 400
 CANVAS_HEIGHT = 300
-NO_IMAGE_FOUND_PATH = 'python/gui/resources/images/no_image_available.png'
+NO_IMAGE_FOUND_PATH = "python/gui/resources/images/no_image_available.png"
 
 
 class ImageDisplayGUI:
@@ -24,8 +24,12 @@ class ImageDisplayGUI:
 
         self.root.mainloop()
 
-    def set_image(self, image: np.array):
+    def set_image(self, img: np.array):
 
+
+
+    def read_image(self, img_path: str):
+        return imread(img_path)    
 
 
 a = ImageDisplayGUI()

@@ -8,6 +8,9 @@ import cv2
 
 
 class ScreenshotFrame:
+    """Captures screenshots, performs source and destination detection,
+    shows final image.
+    """
     def __init__(self):
         # self.current_frame = crop_image_to_working_area()
         self.current_frame = cv2.imread(

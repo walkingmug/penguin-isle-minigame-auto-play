@@ -19,7 +19,7 @@ def main() -> None:
 
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
-        img.get_screenshot()
+        img.get_screen_img()
         img.find_source()
         img.find_destination()
         img.update_frame_with_src_and_dest()

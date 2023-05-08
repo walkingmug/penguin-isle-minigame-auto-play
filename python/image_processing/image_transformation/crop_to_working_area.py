@@ -28,11 +28,9 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
 
     :return: An image of the cropped screenshare.
     """
-    # get color bounds of green box
-    LOWER_BOUND = (0, 195, 70)  # lower bound for each channel
-    UPPER_BOUND = (0, 205, 80)  # upper bound for each channel
-
-    # create the black and white mask
+    # create black and white mask based on green color channel bounds
+    LOWER_BOUND = (0, 195, 70)
+    UPPER_BOUND = (0, 205, 80) 
     bw_mask = cv2.inRange(screenshot, LOWER_BOUND, UPPER_BOUND)
 
     # get the diagonal endpoints of the white mask
@@ -55,7 +53,8 @@ def crop_image_to_working_area() -> np.array:
 
     :return: A cropped image of the working area.
     """
-    screenshare = get_screenshare_from_screenshot(cv2.imread('temp/screenshots/screenshot.png'))
+    screenshare = get_screenshare_from_screenshot(
+        cv2.imread('temp/screenshots/screenshot.png'))
     working_area = crop_out_first_and_last_quarter(screenshare)
 
     return working_area

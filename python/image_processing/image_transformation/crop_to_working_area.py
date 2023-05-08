@@ -9,9 +9,8 @@ def get_working_area(img: np.array) -> np.array:
     """Removes first and fourth quarter on y-axis.
 
     :param img: Source image to be cropped
-    :return: The image with the croppet first and fourth quarter of the y-axis
+    :return: The image with the cropped first and fourth quarter of the y-axis
     """
-    # keep first and last quarter of the image
     hh, _ = img.shape[:2]
     crop_of_relevant_area = img[int(hh/4):int(hh-(hh/4)),]
 

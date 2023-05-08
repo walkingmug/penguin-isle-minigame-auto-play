@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 
 
-def get_working_area(img: np.array) -> np.array:
+def crop_out_first_and_last_quarter(img: np.array) -> np.array:
     """Removes first and fourth quarter on y-axis.
 
     :param img: Source image to be cropped
@@ -57,6 +57,6 @@ def crop_image_to_working_area() -> np.array:
     :return: A cropped image of the working area.
     """
     screenshare = get_screenshare()
-    working_area = get_working_area(screenshare)
+    working_area = crop_out_first_and_last_quarter(screenshare)
 
     return working_area

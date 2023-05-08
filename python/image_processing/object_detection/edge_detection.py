@@ -3,7 +3,6 @@
 
 import cv2
 import numpy as np
-from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
 
 
 def dilate_edges(edges_img: np.array) -> np.array:

@@ -3,12 +3,17 @@ import numpy as np
 from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
 
 
-def perform_morphological_operations(edges: np.array):
+def perform_morphological_operations(edges_img: np.array) -> np.array:
+    """Performs dilation to complete the circles.
+
+    :param edges_img: Image with detected edges
+    :return: Image with dilated edges
+    """
     # perform dilation to complete circles
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (4,4))
-    edges = cv2.dilate(edges, kernel, iterations=1)
+    edges_img = cv2.dilate(edges_img, kernel, iterations=1)
 
-    return edges
+    return edges_img
 
 
 def get_edges_from_image(cropped_img) -> np.array:

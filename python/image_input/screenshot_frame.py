@@ -15,8 +15,6 @@ class ScreenshotFrame:
         # self.current_frame = crop_image_to_working_area()
         self.current_frame = cv2.imread(
             "temp/screenshots/crop_of_relevant_area.jpg")
-        cv2.imshow("Screenshot", self.current_frame)
-        cv2.waitKey(0)
     
     def get_screenshot(self):
         # self.current_frame = crop_image_to_working_area()

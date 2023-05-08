@@ -24,14 +24,13 @@ class ImageDisplayGUI:
         self.canvas = tk.Canvas(
             self.root, width=CANVAS_WIDTH, height=CANVAS_HEIGHT)
         self.canvas.pack()
-        self.canvas.create_image(0, 0, anchor=tk.NW, image=self.photo)
-
+        self.set_image(self.photo)
         self.root.mainloop()
 
     def set_image(self, img: np.array):
-        pass
+        self.canvas.create_image(0, 0, anchor=tk.NW, image=img)
 
-    def read_image(self, img_path: str):
+    def get_image(self, img_path: str):
         return imread(img_path)
 
     def _add_auto_radiobutton(self):

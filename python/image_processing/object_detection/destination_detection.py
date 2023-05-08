@@ -40,7 +40,7 @@ def get_center_of_destination_iceberg(cropped_img):
     detector = cv2.SimpleBlobDetector_create(params)
     keypoints = detector.detect(img)
 
-    # manually mark destination center if itis not found
+    # manually mark destination center if it is not found
     if len(keypoints) != 1:
         _, _, x2, y2 = get_markings(mark_dest=True)
     else:

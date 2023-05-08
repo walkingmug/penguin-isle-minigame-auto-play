@@ -8,7 +8,7 @@ class ImageDisplayGUI:
         self.root.title("Jump Jump Auto Player")
         self.image_path = image_path
 
-        self.current_image = image_path.open(self.image_path)
+        self.current_image = Image.open(self.image_path)
         self.photo = ImageTk.PhotoImage(self.current_image)
 
         self.canvas = tk.Canvas(
@@ -17,3 +17,4 @@ class ImageDisplayGUI:
         self.canvas.create_image(0, 0, anchor=tk.NW, current_image=self.photo)
 
         self.root.mainloop()
+a = ImageDisplayGUI()

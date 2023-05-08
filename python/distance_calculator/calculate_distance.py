@@ -1,3 +1,7 @@
+"""Functions for calculating the distance between two pixels.
+"""
+
+
 def get_distance_in_pixels(x_src, y_src, x_dest, y_dest) -> float:
     """Calculates the pixel distance (Euclidean) between two marks in an image.
 

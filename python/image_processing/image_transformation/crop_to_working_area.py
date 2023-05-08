@@ -1,10 +1,12 @@
+"""Crops an image to avoid redundant image information.
+"""
+
 import cv2
 import numpy as np
 
 
 def get_working_area(img: np.array) -> np.array:
-    """ Removes reduntant image parts (first and fourth y-axis quarter) since
-    the icebergs in the game only appear on the middle two quarters of the image.
+    """Removes first and fourth quarter on y-axis.
 
     :param img: Source image to be cropped
     :return: The image with the croppet first and fourth quarter of the y-axis

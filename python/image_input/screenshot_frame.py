@@ -12,9 +12,7 @@ class ScreenshotFrame:
     shows final image.
     """
     def __init__(self):
-        # self.current_frame = crop_image_to_working_area()
-        self.current_frame = cv2.imread(
-            "temp/screenshots/crop_of_relevant_area.jpg")
+        pass
     
     def get_screenshot(self):
         # self.current_frame = crop_image_to_working_area()

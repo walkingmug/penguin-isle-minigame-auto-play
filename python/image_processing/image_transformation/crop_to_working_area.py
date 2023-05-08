@@ -26,7 +26,7 @@ def crop_out_first_and_last_quarter(img: np.array) -> np.array:
 def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     """Crops the screenshare from the screenshot image.
 
-    :return: An image of the cropped screenshare.
+    :return: An image of the cropped screenshare
     """
     # create black and white mask based on green color channel bounds
     LOWER_BOUND = (0, 195, 70)

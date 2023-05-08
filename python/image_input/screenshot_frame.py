@@ -43,6 +43,9 @@ class ScreenshotFrame:
         self.draw_destination_on_frame()
         self.draw_source_on_frame()
 
+    def get_frame(self):
+        return self.current_frame
+
     def display_frame(self):
         cv2.destroyAllWindows()
         cv2.imshow("Screenshot", self.current_frame)

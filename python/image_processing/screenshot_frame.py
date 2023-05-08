@@ -2,8 +2,8 @@
 """
 
 from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
-from python.image_processing.source_detection import get_center_of_source_iceberg
-from python.image_processing.destination_detection import get_center_of_destination_iceberg
+from python.image_processing.object_detection.source_detection import get_center_of_source_iceberg
+from python.image_processing.object_detection.destination_detection import get_center_of_destination_iceberg
 import cv2
 
 

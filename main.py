@@ -3,8 +3,8 @@ from python.image_input.get_markings import get_markings
 from python.distance_calculator.calculate_distance import get_distance_in_pixels
 from python.distance_calculator.convert_distance import get_push_duration_from_distance
 from python.arduino_serial_operations.serial_operations import ArduinoSerial
-from python.image_processing.source_detection import get_center_of_source_iceberg
-from python.image_processing.destination_detection import get_center_of_destination_iceberg
+from python.image_processing.object_detection.source_detection import get_center_of_source_iceberg
+from python.image_processing.object_detection.destination_detection import get_center_of_destination_iceberg
 from python.image_processing.screenshot_frame import ScreenshotFrame
 
 

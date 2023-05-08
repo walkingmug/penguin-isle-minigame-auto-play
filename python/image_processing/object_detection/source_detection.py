@@ -24,7 +24,7 @@ def get_source_blob_params():
     return params
 
 
-def get_center_of_source_iceberg(cropped_img):
+def get_center_of_source_iceberg(cropped_img) -> int:
     """Finds the iceberg in the game where the character currently is.
 
     :return: The keypoint of the character, and the center position of it.

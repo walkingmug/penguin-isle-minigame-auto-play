@@ -3,7 +3,7 @@ import numpy as np
 from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
 
 
-def perform_morphological_operations(edges_img: np.array) -> np.array:
+def dilate_edges(edges_img: np.array) -> np.array:
     """Performs dilation to complete the circles.
 
     :param edges_img: Image with detected edges
@@ -16,7 +16,7 @@ def perform_morphological_operations(edges_img: np.array) -> np.array:
     return edges_img
 
 
-def get_edges_from_image(cropped_img) -> np.array:
+def detect_edges_on_image(cropped_img) -> np.array:
     """Performs Canny edge detection on an image.
 
     :return: A b&w image with the edges in white and background in black.
@@ -35,7 +35,7 @@ def get_edges_from_image(cropped_img) -> np.array:
     edges = cv2.Canny(img, t_lower, t_upper)
 
     # perform dilation to complete circles
-    edges = perform_morphological_operations(edges)
+    edges = dilate_edges(edges)
 
     # save result
     # cv2.imwrite("temp/screenshots/edge.jpg", edges)

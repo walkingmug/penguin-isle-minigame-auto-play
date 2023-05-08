@@ -1,5 +1,6 @@
-"""Takes a screenshot of a specified screensharing software.
+"""Functions for capturing image screenshot from a software.
 """
+
 import win32gui
 import win32con
 import time

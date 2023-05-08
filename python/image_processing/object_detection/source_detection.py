@@ -3,13 +3,11 @@ from python.image_input.get_markings import get_markings
 import cv2
 
 
-def get_center_of_source_iceberg(cropped_img):
-    """Finds the iceberg in the game where the character currently is.
+def get_source_blob_params():
+    """Initialize and set the parameters for detecting the destination blob.
 
-    :return: The keypoint of the character, and the center position of it.
+    :return: The blob detector with modified parameters
     """
-    img = get_edges_from_image(cropped_img)
-
     # set up the SimpleBlobDetector with default parameters
     params = cv2.SimpleBlobDetector_Params()
 
@@ -23,10 +21,19 @@ def get_center_of_source_iceberg(cropped_img):
     params.minConvexity = 0.7
     params.maxConvexity = 0.8
 
-    # create a detector with the parameters
-    detector = cv2.SimpleBlobDetector_create(params)
+    return params
 
-    # detect blobs
+
+def get_center_of_source_iceberg(cropped_img):
+    """Finds the iceberg in the game where the character currently is.
+
+    :return: The keypoint of the character, and the center position of it.
+    """
+    img = get_edges_from_image(cropped_img)
+
+    # detect blobs with custom parameters
+    params = get_source_blob_params()
+    detector = cv2.SimpleBlobDetector_create(params)
     keypoints = detector.detect(img)
 
     # assume the bigger blob is the surface of the iceberg

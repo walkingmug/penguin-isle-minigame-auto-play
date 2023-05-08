@@ -1,3 +1,6 @@
+"""Classes for connecting to and manipulating Arduino.
+"""
+
 from serial import Serial
 import time
 

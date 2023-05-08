@@ -1,3 +1,6 @@
+"""Classes for capturing screenshots and performing image processing. 
+"""
+
 from python.image_processing.crop_to_working_area import crop_image_to_working_area
 from python.image_processing.source_detection import get_center_of_source_iceberg
 from python.image_processing.destination_detection import get_center_of_destination_iceberg

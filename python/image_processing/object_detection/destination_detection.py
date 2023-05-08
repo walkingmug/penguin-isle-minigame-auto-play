@@ -1,15 +1,13 @@
 from python.image_processing.object_detection.edge_detection import get_edges_from_image
 from python.image_input.get_markings import get_markings
 import cv2
- 
 
-def get_center_of_destination_iceberg(cropped_img):
-    """Finds the iceberg in the game where the character needs to travel.
 
-    :return: The keypoint of the character, and the center position of it.
+def get_destination_blob_params():
+    """Initialize and set the parameters for detecting the destination blob.
+
+    :return: The blob detector with modified parameters
     """
-    img = get_edges_from_image(cropped_img)
-
     # set up the SimpleBlobDetector with default parameters
     params = cv2.SimpleBlobDetector_Params()
 
@@ -26,6 +24,19 @@ def get_center_of_destination_iceberg(cropped_img):
     params.filterByConvexity = True
     params.minConvexity = 0.9
     params.maxConvexity = 1
+
+    return params
+
+
+def get_center_of_destination_iceberg(cropped_img):
+    """Finds the iceberg in the game where the character needs to travel.
+
+    :return: The keypoint of the character, and the center position of it.
+    """
+    img = get_edges_from_image(cropped_img)
+
+    # set parameters for the blob detection
+    params = get_destination_blob_params()
 
     # create a detector with the parameters
     detector = cv2.SimpleBlobDetector_create(params)

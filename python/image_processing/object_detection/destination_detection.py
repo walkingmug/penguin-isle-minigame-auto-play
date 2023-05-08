@@ -1,3 +1,6 @@
+"""Functions for detecting blobs of regular shape.
+"""
+
 from python.image_processing.object_detection.edge_detection import get_edges_from_image
 from python.image_input.get_markings import get_markings
 import cv2

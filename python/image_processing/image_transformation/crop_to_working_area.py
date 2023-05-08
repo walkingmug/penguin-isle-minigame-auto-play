@@ -3,6 +3,7 @@
 
 import cv2
 import numpy as np
+from python.image_input.get_image_from_software import get_image_from_software
 
 
 def crop_out_first_and_last_quarter(img: np.array) -> np.array:
@@ -22,19 +23,17 @@ def crop_out_first_and_last_quarter(img: np.array) -> np.array:
     return crop_of_relevant_area
 
 
-def get_screenshare_from_screenshot() -> np.array:
+def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     """Crops the screenshare from the screenshot image.
 
     :return: An image of the cropped screenshare.
     """
-    img = cv2.imread('temp/screenshots/screenshot.png')
-
     # get color bounds of green box
-    lower = (0, 195, 70)  # lower bound for each channel
-    upper = (0, 205, 80)  # upper bound for each channel
+    LOWER_BOUND = (0, 195, 70)  # lower bound for each channel
+    UPPER_BOUND = (0, 205, 80)  # upper bound for each channel
 
     # create the black and white mask
-    bw_mask = cv2.inRange(img, lower, upper)
+    bw_mask = cv2.inRange(screenshot, LOWER_BOUND, UPPER_BOUND)
 
     # get the diagonal endpoints of the white mask
     white_loc_in_mask = np.where(bw_mask == 255)
@@ -42,7 +41,7 @@ def get_screenshare_from_screenshot() -> np.array:
         white_loc_in_mask[0]), np.max(white_loc_in_mask[1]), np.max(white_loc_in_mask[0])
 
     # crop the image at the bounds
-    crop_of_screenshare = img[ymin:ymax, xmin:xmax]
+    crop_of_screenshare = screenshot[ymin:ymax, xmin:xmax]
 
     # write result to disk
     # cv2.imwrite("temp/screenshots/green_box_mask.jpg", mask)
@@ -56,7 +55,7 @@ def crop_image_to_working_area() -> np.array:
 
     :return: A cropped image of the working area.
     """
-    screenshare = get_screenshare_from_screenshot()
+    screenshare = get_screenshare_from_screenshot(cv2.imread('temp/screenshots/screenshot.png'))
     working_area = crop_out_first_and_last_quarter(screenshare)
 
     return working_area

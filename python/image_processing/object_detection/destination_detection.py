@@ -1,7 +1,7 @@
 """Functions for detecting blobs of regular shape.
 """
 
-from python.image_processing.object_detection.edge_detection import get_edges_from_image
+from python.image_processing.object_detection.edge_detection import detect_edges_on_image
 from python.image_input.get_markings import get_markings
 import cv2
 
@@ -36,7 +36,7 @@ def get_center_of_destination_iceberg(cropped_img) -> int:
 
     :return: The keypoint of the character, and the center position of it.
     """
-    img = get_edges_from_image(cropped_img)
+    img = detect_edges_on_image(cropped_img)
 
     # detect blobs with custom parameters
     params = get_destination_blob_params()

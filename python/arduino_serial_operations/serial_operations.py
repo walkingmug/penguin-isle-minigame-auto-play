@@ -3,6 +3,8 @@ import time
 
 
 class ArduinoSerial:
+    """Configures Arduino connection and communicates movements to the servo.
+    """
     def __init__(self):
         self.ser = Serial(port='COM3', baudrate=9600)
         time.sleep(2)

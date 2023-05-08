@@ -1,3 +1,6 @@
+"""Functions for manually inputting marks on an image.
+"""
+
 import cv2
 from python.image_processing.crop_to_working_area import crop_image_to_working_area
 

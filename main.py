@@ -5,7 +5,7 @@ from python.distance_calculator.convert_distance import get_push_duration_from_d
 from python.arduino_serial_operations.serial_operations import ArduinoSerial
 from python.image_processing.object_detection.source_detection import get_center_of_source_iceberg
 from python.image_processing.object_detection.destination_detection import get_center_of_destination_iceberg
-from python.image_processing.screenshot_frame import ScreenshotFrame
+from python.image_input.screenshot_frame import ScreenshotFrame
 
 
 def main() -> None:

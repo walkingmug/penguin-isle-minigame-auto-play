@@ -10,7 +10,7 @@ from python.image_input.screenshot_frame import ScreenshotFrame
 
 def main() -> None:
     # get the first screenshot
-    img = ScreenshotFrame()
+    screen_img = ScreenshotFrame()
 
     # perform image processing and update frames
     while True:
@@ -19,13 +19,13 @@ def main() -> None:
 
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
-        img.get_screen_img()
-        img.find_source()
-        img.find_destination()
-        img.update_frame_with_src_and_dest()
-        img.display_frame()
-        x1, y1 = img.x_src, img.y_src
-        x2, y2 = img.x_dest, img.y_dest
+        screen_img.get_screen_img()
+        screen_img.find_source()
+        screen_img.find_destination()
+        screen_img.update_frame_with_src_and_dest()
+        current_frame = screen_img.get_frame()
+        x1, y1 = screen_img.x_src, screen_img.y_src
+        x2, y2 = screen_img.x_dest, screen_img.y_dest
         
         # calculate the distance between the two marks
         distance_between_marks = get_distance_in_pixels(x1, y1, x2, y2)

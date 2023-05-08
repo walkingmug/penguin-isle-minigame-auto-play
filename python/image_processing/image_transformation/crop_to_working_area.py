@@ -11,8 +11,10 @@ def get_working_area(img: np.array) -> np.array:
     :param img: Source image to be cropped
     :return: The image with the cropped first and fourth quarter of the y-axis
     """
-    hh, _ = img.shape[:2]
-    crop_of_relevant_area = img[int(hh/4):int(hh-(hh/4)),]
+    img_height, _ = img.shape[:2]
+    TOP_QUARTER = int(img_height/4)
+    BOTTOM_QUARTER = int(img_height-(img_height/4))
+    crop_of_relevant_area = img[TOP_QUARTER:BOTTOM_QUARTER,]
 
     # write result to disk
     # cv2.imwrite("temp/screenshots/crop_of_relevant_area.jpg", crop_of_relevant_area)

@@ -2,7 +2,7 @@
 """
 
 import cv2
-from python.image_processing.crop_to_working_area import crop_image_to_working_area
+from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
 
 
 click_type = ''

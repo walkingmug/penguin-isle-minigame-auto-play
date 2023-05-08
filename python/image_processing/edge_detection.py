@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from python.image_processing.crop_to_working_area import crop_image_to_working_area
+from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
 
 
 def perform_morphological_operations(edges: np.array):

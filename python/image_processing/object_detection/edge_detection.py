@@ -21,18 +21,15 @@ def detect_edges_on_image(cropped_img) -> np.array:
 
     :return: A b&w image with the edges in white and background in black.
     """
-    # get image
-    img = cropped_img
-
     # convert image to grayscale
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    cropped_img = cv2.cvtColor(cropped_img, cv2.COLOR_BGR2GRAY)
 
     # set lower and upper threshold (found by trial and error)
-    t_lower = 50
-    t_upper = 150
+    LOWER_THRESH = 50
+    UPPER_THRESH = 150
 
     # find edges with Canny
-    edges = cv2.Canny(img, t_lower, t_upper)
+    edges = cv2.Canny(cropped_img, LOWER_THRESH, UPPER_THRESH)
 
     # perform dilation to complete circles
     edges = dilate_edges(edges)

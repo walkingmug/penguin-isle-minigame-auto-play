@@ -4,7 +4,7 @@ import cv2
 
 
 def get_source_blob_params():
-    """Initialize and set the parameters for detecting the destination blob.
+    """Initialize and set the parameters for detecting the source blob.
 
     :return: The blob detector with modified parameters
     """

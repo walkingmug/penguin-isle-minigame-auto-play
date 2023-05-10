@@ -49,5 +49,5 @@ class ScreenshotFrame:
     def display_frame(self):
         cv2.destroyAllWindows()
         cv2.imshow("Screenshot", self.current_frame)
-        cv2.waitKey(0)
+        cv2.waitKey(1)
 

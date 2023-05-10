@@ -28,6 +28,8 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
 
     :return: An image of the cropped screenshare
     """
+    # screenshot = np.array(screenshot)
+
     # create black and white mask based on green color channel bounds
     LOWER_BOUND = (0, 195, 70)
     UPPER_BOUND = (0, 205, 80) 
@@ -48,13 +50,13 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     return crop_of_screenshare
 
 
-def crop_image_to_working_area() -> np.array:
+def crop_image_to_working_area(screenshot: np.array) -> np.array:
     """Extracts the working area from a screenshot.
 
     :return: A cropped image of the working area.
     """
-    screenshare = get_screenshare_from_screenshot(
-        cv2.imread('temp/screenshots/screenshot.png'))
+    screenshare = get_screenshare_from_screenshot(screenshot)
+        # cv2.imread('temp/screenshots/screenshot.png'))
     working_area = crop_out_first_and_last_quarter(screenshare)
 
     return working_area

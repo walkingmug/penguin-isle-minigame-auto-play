@@ -5,6 +5,7 @@ from python.image_processing.image_transformation.crop_to_working_area import cr
 from python.image_processing.object_detection.source_detection import get_center_of_source_iceberg
 from python.image_processing.object_detection.destination_detection import get_center_of_destination_iceberg
 import cv2
+import numpy as np
 
 
 class ScreenshotFrame:
@@ -14,10 +15,10 @@ class ScreenshotFrame:
     def __init__(self):
         pass
     
-    def get_screen_img(self):
-        # self.current_frame = crop_image_to_working_area()
-        self.current_frame = cv2.imread(
-            "temp/screenshots/crop_of_relevant_area.jpg")
+    def get_screen_img(self, screenshot: np.array):
+        self.current_frame = crop_image_to_working_area(screenshot)
+        # self.current_frame = cv2.imread(
+            # "temp/screenshots/crop_of_relevant_area.jpg")
 
     def find_source(self):
         self.x_src, self.y_src = get_center_of_source_iceberg(

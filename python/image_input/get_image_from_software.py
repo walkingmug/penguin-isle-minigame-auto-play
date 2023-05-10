@@ -6,6 +6,7 @@ import win32con
 import time
 import PIL.Image
 from PIL import ImageGrab
+import numpy as np
 
 
 def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
@@ -20,14 +21,14 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
 
     # Display the window
     win32gui.ShowWindow(zoom_hwnd, win32con.SW_SHOWNORMAL)
-    time.sleep(1)
+    time.sleep(20)
 
     # Get the coordinates of the window and take a screenshot
     (left, top, right, bottom) = win32gui.GetWindowRect(zoom_hwnd)
     screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
 
     # Minimize the window
-    # win32gui.ShowWindow(zoom_hwnd, win32con.SW_MINIMIZE)
+    win32gui.ShowWindow(zoom_hwnd, win32con.SW_MINIMIZE)
 
     # Save the screenshot to a file
     screenshot.save('temp\screenshots\screenshot.png')

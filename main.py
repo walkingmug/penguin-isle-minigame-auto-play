@@ -11,16 +11,18 @@ import time
 
 def main() -> None:
     screen_img = ScreenshotFrame()
+    servo = ArduinoSerial()
     # gui = ImageDisplayGUI()
 
     # perform image processing and update frames
     while True:
         # save a screenshot image from a given software
-        get_image_from_software("Zoom - Google Chrome")
+        screenshot = get_image_from_software("Zoom - Google Chrome")
 
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
-        screen_img.get_screen_img()
+        screen_img.get_screen_img(screenshot)
+        frame = screen_img.get_frame()
         screen_img.find_source()
         screen_img.find_destination()
         screen_img.update_frame_with_src_and_dest()
@@ -38,11 +40,10 @@ def main() -> None:
         distance_between_marks = get_distance_in_pixels(x1, y1, x2, y2)
 
         # convert the distance to seconds
-        push_duration = get_push_duration_from_distance(distance_between_marks)
-        print(push_duration)
+        push_duration = get_push_duration_from_distance(distance_between_marks, frame)
+        print(f"Servo Push: {push_duration} seconds.")
 
         # perform movement on the servo
-        servo = ArduinoSerial()
         servo.move_servo(push_duration)
         time.sleep(3)
 

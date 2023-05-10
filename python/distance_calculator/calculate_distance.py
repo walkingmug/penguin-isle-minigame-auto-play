@@ -1,6 +1,5 @@
 """Functions for calculating the distance between two pixels.
 """
-from python.distance_calculator.convert_pixel_to_percent import get_percent_distance_of_marks
 
 
 def get_euclidean_distance(x_src, y_src, x_dest, y_dest) -> float:

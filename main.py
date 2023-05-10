@@ -9,17 +9,18 @@ from python.image_input.screenshot_frame import ScreenshotFrame
 from python.gui.app import ImageDisplayGUI
 from python.distance_calculator.convert_pixel_to_percent import convert_pixel_dist_to_percent_dist
 import time
-
+from cv2 import imread
 
 def main() -> None:
     screen_img = ScreenshotFrame()
-    servo = ArduinoSerial()
+    # servo = ArduinoSerial()
     # gui = ImageDisplayGUI()
 
     # perform image processing and update frames
     while True:
         # save a screenshot image from a given software
-        screenshot = get_image_from_software("Zoom - Google Chrome")
+        # screenshot = get_image_from_software("Zoom - Google Chrome")
+        screenshot = imread("temp/screenshots/screenshot.png")
 
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
@@ -40,13 +41,14 @@ def main() -> None:
         x1, y1, x2, y2 = convert_pixel_dist_to_percent_dist(
             screen_img.x_src, screen_img.y_src, screen_img.x_dest, screen_img.y_dest, frame)
         distance_between_marks = get_euclidean_distance(x1, y1, x2, y2)
+        print(distance_between_marks)
 
         # convert the distance to seconds
         push_duration = get_push_duration_from_distance(distance_between_marks)
         print(f"Servo Push: {push_duration} seconds.")
 
         # perform movement on the servo
-        servo.move_servo(push_duration)
+        # servo.move_servo(push_duration)
         time.sleep(3)
 
 

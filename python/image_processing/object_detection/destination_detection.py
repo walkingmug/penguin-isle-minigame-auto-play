@@ -38,7 +38,7 @@ def get_center_of_destination_iceberg(cropped_img, manual=True) -> int:
     """
     # let user manually select  destination
     if manual:
-        _, _, x2, y2 = get_markings(mark_dest=True)
+        _, _, x2, y2 = get_markings(cropped_img, mark_dest=True)
         return x2, y2
     
     # detect blobs with custom parameters

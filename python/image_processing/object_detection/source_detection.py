@@ -34,7 +34,7 @@ def get_center_of_source_iceberg(cropped_img, manual=True) -> int:
     """
     # let user manually select source and destination
     if manual:
-        x1, y1, _, _ = get_markings(mark_src=True)
+        x1, y1, _, _ = get_markings(cropped_img, mark_src=True)
         return x1, y1
 
     # detect blobs with custom parameters

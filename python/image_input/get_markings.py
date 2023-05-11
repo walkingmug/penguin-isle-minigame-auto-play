@@ -47,15 +47,14 @@ def click_event(event, x, y, flags, params) -> None:
         cv2.imshow(img_title, img)
 
 
-def get_markings(mark_src=False, mark_dest=False) -> int:
+def get_markings(cropped_img, mark_src=False, mark_dest=False) -> int:
     """Lets the user input two marks on the image.
     """
     global img
     global click_type
     global img_title
 
-    # read and display the image
-    img = crop_image_to_working_area()
+    img = cropped_img
 
     # get source mark from user
     if mark_src == True:

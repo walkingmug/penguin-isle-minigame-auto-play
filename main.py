@@ -20,7 +20,7 @@ def main() -> None:
     while True:
         # save a screenshot image from a given software
         # screenshot = get_image_from_software("Zoom - Google Chrome")
-        screenshot = imread("temp/screenshots/screenshot.png")
+        screenshot = imread("temp/screenshots/screenshot copy.png")
 
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
@@ -49,7 +49,7 @@ def main() -> None:
 
         # perform movement on the servo
         # servo.move_servo(push_duration)
-        time.sleep(3)
+        # time.sleep(3)
 
 
 if __name__ == "__main__":

@@ -2,6 +2,9 @@
 Servo myservo;
 const int greenLedPin = 5;
 const int redLedPin = 3;
+const int servoUp = 0;
+const int servoDown = 20;
+
 
 void setup(){
   pinMode(greenLedPin, OUTPUT);
@@ -15,12 +18,12 @@ void loop(){
   if (Serial.available() > 0){
     int incomingString = Serial.read(); // read the incoming string
     if (incomingString == '1'){
-      myservo.write(100);
+      myservo.write(servoDown);
       digitalWrite(greenLedPin, HIGH);
       digitalWrite(redLedPin, LOW);
     }
     if (incomingString == '0'){
-      myservo.write(0);
+      myservo.write(servoUp);
       digitalWrite(greenLedPin, LOW);
       digitalWrite(redLedPin, HIGH);
     }

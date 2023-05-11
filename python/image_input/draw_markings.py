@@ -1,33 +1,31 @@
+"""Functions for drawing marks on an image.
+"""
+
 import numpy as np
 from cv2 import circle
 
 
-def draw_src_mark(frame: np.array, x_dest: int, y_src: int):
-    """Draws a red mark on an image (destination mark).
+def draw_mark(frame: np.array, x: int, y: int, color_name='red'):
+    """Draws a mark on an image (destination mark).
 
     :param frame: The image for the mark to appear on
-    :param x_dest: X-position of the desired mark
-    :param y_src: Y-position of the desired mark
+    :param x: X-position of the desired mark
+    :param y: Y-position of the desired mark
     :return: The frame with the mark
     """
-    frame = circle(
-        frame, center=(x_dest, y_src), radius=3, color=(0, 0, 255), thickness=-1)
-    frame = circle(
-        frame, center=(x_dest, y_src), radius=3, color=(0, 0, 0), thickness=1)
+    # convert color name to cv2 color tuple
+    color_map = {
+    'red': (0, 0, 255),
+    'green': (0, 255, 0),
+    'blue': (255, 0, 0)
+    }
+    if color_name in color_map:
+        color_tuple = color_map[color_name]
     
-    return frame
-
-def draw_dest_mark(frame: np.array, x_dest: int, y_dest: int):
-    """Draws a green mark on an image (destination mark).
-
-    :param frame: The image for the mark to appear on
-    :param x_dest: X-position of the desired mark
-    :param y_dest: Y-position of the desired mark
-    :return: The frame with the mark
-    """
+    # draw mark
     frame = circle(
-        frame, center=(x_dest, y_dest), radius=3, color=(0, 255, 0), thickness=-1)
+        frame, center=(x, y), radius=3, color=color_tuple, thickness=-1)
     frame = circle(
-        frame, center=(x_dest, y_dest), radius=3, color=(0, 0, 0), thickness=1)
+        frame, center=(x, y), radius=3, color=(0, 0, 0), thickness=1)
     
     return frame

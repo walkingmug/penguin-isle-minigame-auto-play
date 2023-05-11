@@ -41,7 +41,7 @@ def main() -> None:
         x1, y1, x2, y2 = convert_pixel_dist_to_percent_dist(
             screen_img.x_src, screen_img.y_src, screen_img.x_dest, screen_img.y_dest, frame)
         distance_between_marks = get_euclidean_distance(x1, y1, x2, y2)
-        print(distance_between_marks)
+        print(f"Distance: {distance_between_marks}")
 
         # convert the distance to seconds
         push_duration = get_push_duration_from_distance(distance_between_marks)

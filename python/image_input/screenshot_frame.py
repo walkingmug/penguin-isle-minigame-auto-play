@@ -4,6 +4,7 @@
 from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
 from python.image_processing.object_detection.source_detection import get_center_of_source_iceberg
 from python.image_processing.object_detection.destination_detection import get_center_of_destination_iceberg
+from python.image_input.draw_markings import draw_mark
 import cv2
 import numpy as np
 
@@ -29,16 +30,10 @@ class ScreenshotFrame:
             self.current_frame)
 
     def draw_source_on_frame(self):
-        self.current_frame = cv2.circle(
-            self.current_frame, center=(self.x_src, self.y_src), radius=3, color=(0, 0, 255), thickness=-1)
-        self.current_frame = cv2.circle(
-            self.current_frame, center=(self.x_src, self.y_src), radius=3, color=(0, 0, 0), thickness=1)
-
+        self.current_frame = draw_mark(self.current_frame, self.x_src, self.y_src, 'red')
+    
     def draw_destination_on_frame(self):
-        self.current_frame = cv2.circle(
-            self.current_frame, center=(self.x_dest, self.y_dest), radius=3, color=(0, 255, 0), thickness=-1)
-        self.current_frame = cv2.circle(
-            self.current_frame, center=(self.x_dest, self.y_dest), radius=3, color=(0, 0, 0), thickness=1)
+        self.current_frame = draw_mark(self.current_frame, self.x_dest, self.y_dest, 'green')
 
     def update_frame_with_src_and_dest(self):
         self.draw_destination_on_frame()

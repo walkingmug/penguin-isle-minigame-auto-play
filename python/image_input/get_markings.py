@@ -42,7 +42,7 @@ def click_event(event, x, y, flags, params) -> None:
             raise ValueError(f"Variable 'click_type' must be either 'src' \
                              or 'dest', but '{click_type}' was given.")
         click_type = ''
-        # cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
         cv2.imshow(img_title, img)
 
 
@@ -55,20 +55,17 @@ def get_markings(cropped_img, mark_src=False, mark_dest=False) -> int:
 
     img = cropped_img
 
-    # get source mark from user
+    # get source/destination mark from user
     if mark_src == True:
         click_type = 'src'
         img_title = 'Mark source'
         cv2.imshow(img_title, img)
         cv2.setMouseCallback(img_title, click_event)
-
-    # get destination mark from user
-    if mark_dest == True:
+    if  mark_dest == True:
         click_type = 'dest'
         img_title = 'Mark destination'
         cv2.imshow(img_title, img)
         cv2.setMouseCallback(img_title, click_event)
-
     # auto get source and destination marks
     if mark_src == False and mark_dest == False:
         return -1

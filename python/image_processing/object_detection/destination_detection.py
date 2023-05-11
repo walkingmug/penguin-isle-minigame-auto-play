@@ -41,9 +41,8 @@ def get_center_of_destination_iceberg(cropped_img, manual=True) -> int:
         _, _, x2, y2 = get_markings(mark_dest=True)
         return x2, y2
     
-    img = detect_edges_on_image(cropped_img)
-
     # detect blobs with custom parameters
+    img = detect_edges_on_image(cropped_img)
     params = get_destination_blob_params()
     detector = cv2.SimpleBlobDetector_create(params)
     keypoints = detector.detect(img)

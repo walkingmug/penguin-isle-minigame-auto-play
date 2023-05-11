@@ -31,11 +31,16 @@ def get_destination_blob_params():
     return params
 
 
-def get_center_of_destination_iceberg(cropped_img) -> int:
+def get_center_of_destination_iceberg(cropped_img, manual=True) -> int:
     """Finds the iceberg in the game where the character needs to travel.
 
     :return: The keypoint of the character, and the center position of it.
     """
+    # let user manually select  destination
+    if manual:
+        _, _, x2, y2 = get_markings(mark_dest=True)
+        return x2, y2
+    
     img = detect_edges_on_image(cropped_img)
 
     # detect blobs with custom parameters

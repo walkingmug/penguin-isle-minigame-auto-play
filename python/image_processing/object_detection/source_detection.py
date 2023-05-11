@@ -27,14 +27,18 @@ def get_source_blob_params():
     return params
 
 
-def get_center_of_source_iceberg(cropped_img) -> int:
+def get_center_of_source_iceberg(cropped_img, manual=True) -> int:
     """Finds the iceberg in the game where the character currently is.
 
     :return: The keypoint of the character, and the center position of it.
     """
-    img = detect_edges_on_image(cropped_img)
+    # let user manually select source and destination
+    if manual:
+        x1, y1, _, _ = get_markings(mark_src=True)
+        return x1, y1
 
     # detect blobs with custom parameters
+    img = detect_edges_on_image(cropped_img)
     params = get_source_blob_params()
     detector = cv2.SimpleBlobDetector_create(params)
     keypoints = detector.detect(img)

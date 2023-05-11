@@ -3,6 +3,7 @@
 
 import cv2
 from python.image_processing.image_transformation.crop_to_working_area import crop_image_to_working_area
+from python.image_input.draw_markings import draw_mark
 
 
 click_type = ''
@@ -32,18 +33,16 @@ def click_event(event, x, y, flags, params) -> None:
         if click_type == 'src':
             x1 = x
             y1 = y
+            draw_mark(img, x1, y1, 'red')
         elif click_type == 'dest':
             x2 = x
             y2 = y
+            draw_mark(img, x2, y2, 'green')
         else:
             raise ValueError(f"Variable 'click_type' must be either 'src' \
                              or 'dest', but '{click_type}' was given.")
         click_type = ''
         # cv2.destroyAllWindows()
-
-        # draw a mark on the click
-        cv2.circle(img, center=(x, y), radius=3,
-                   color=(0, 0, 255), thickness=-1)
         cv2.imshow(img_title, img)
 
 

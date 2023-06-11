@@ -27,5 +27,9 @@ void loop(){
       digitalWrite(greenLedPin, LOW);
       digitalWrite(redLedPin, HIGH);
     }
+    else{
+      digitalWrite(greenLedPin, LOW);
+      digitalWrite(redLedPin, LOW);
+    }
   }
 }

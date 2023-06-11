@@ -26,6 +26,5 @@ class ArduinoSerial:
 
     def move_servo(self, duration: float):
         self._move_servo_down()
-        print(duration)
         time.sleep(duration)
         self._move_servo_up()

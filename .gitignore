@@ -1,6 +1,7 @@
 /.gitignore
 /penguin-isle-py310
 /temp
+python/train
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

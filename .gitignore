@@ -2,6 +2,7 @@
 /penguin-isle-py310
 /temp
 python/train
+/penguin-isle-virtualenv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

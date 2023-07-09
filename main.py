@@ -26,14 +26,21 @@ from cv2 import imread
 
 def main() -> None:
     screen_img = ScreenshotFrame()
-    servo = ArduinoSerial()
+    # servo = ArduinoSerial()
     # gui = ImageDisplayGUI()
+    filename = 1
 
     # perform image processing and update frames
     while True:
         # save a screenshot image from a given software
-        screenshot = get_image_from_software("Zoom - Google Chrome")
-        screenshot = imread("temp/screenshots/screenshot.png")
+        # screenshot = get_image_from_software("Zoom - Google Chrome")
+        # screenshot = imread("temp/screenshots/screenshot.png")
+
+        try:
+            screenshot = imread(f"python/train/screenshot_orig/{filename}.png")
+        except:
+            print(f'Couldn\'t find image "{filename}.png"')
+            break
 
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
@@ -67,7 +74,8 @@ def main() -> None:
         print(f"Servo Push: {push_duration} seconds.")
 
         # perform movement on the servo
-        servo.move_servo(push_duration)
+        # servo.move_servo(push_duration)
+        filename += 1
         time.sleep(3)
 
 

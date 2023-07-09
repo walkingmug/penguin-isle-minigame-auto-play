@@ -33,7 +33,7 @@ def get_destination_blob_params():
     return params
 
 
-def get_center_of_destination_iceberg(cropped_img, manual=True) -> int:
+def get_center_of_destination_iceberg(cropped_img, manual=False) -> int:
     """Finds the iceberg in the game where the character needs to travel.
 
     :return: The keypoint of the character, and the center position of it.

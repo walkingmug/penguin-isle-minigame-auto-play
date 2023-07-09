@@ -3,7 +3,6 @@
 
 import cv2
 import numpy as np
-from python.image_input.get_image_from_software import get_image_from_software
 
 
 def crop_out_first_and_last_quarter(img: np.array) -> np.array:
@@ -13,9 +12,9 @@ def crop_out_first_and_last_quarter(img: np.array) -> np.array:
     :return: The image with the cropped first and fourth quarter of the y-axis
     """
     img_height, _ = img.shape[:2]
-    TOP_QUARTER = int(img_height/4)
-    BOTTOM_QUARTER = int(img_height-(img_height/4))
-    crop_of_relevant_area = img[TOP_QUARTER:BOTTOM_QUARTER,]
+    TOP_PART = int(img_height / 4)
+    BOTTOM_PART = int(img_height - (img_height / 3))
+    crop_of_relevant_area = img[TOP_PART:BOTTOM_PART,]
 
     # write result to disk
     # cv2.imwrite("temp/screenshots/crop_of_relevant_area.jpg", crop_of_relevant_area)
@@ -32,13 +31,17 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
 
     # create black and white mask based on green color channel bounds
     LOWER_BOUND = (0, 195, 70)
-    UPPER_BOUND = (0, 205, 80) 
+    UPPER_BOUND = (0, 205, 80)
     bw_mask = cv2.inRange(screenshot, LOWER_BOUND, UPPER_BOUND)
 
     # get the diagonal endpoints of the white mask
     white_loc_in_mask = np.where(bw_mask == 255)
-    xmin, ymin, xmax, ymax = np.min(white_loc_in_mask[1]), np.min(
-        white_loc_in_mask[0]), np.max(white_loc_in_mask[1]), np.max(white_loc_in_mask[0])
+    xmin, ymin, xmax, ymax = (
+        np.min(white_loc_in_mask[1]),
+        np.min(white_loc_in_mask[0]),
+        np.max(white_loc_in_mask[1]),
+        np.max(white_loc_in_mask[0]),
+    )
 
     # crop the image at the bounds
     crop_of_screenshare = screenshot[ymin:ymax, xmin:xmax]
@@ -56,7 +59,7 @@ def crop_image_to_working_area(screenshot: np.array) -> np.array:
     :return: A cropped image of the working area.
     """
     screenshare = get_screenshare_from_screenshot(screenshot)
-        # cv2.imread('temp/screenshots/screenshot.png'))
+    # cv2.imread('temp/screenshots/screenshot.png'))
     working_area = crop_out_first_and_last_quarter(screenshare)
 
     return working_area

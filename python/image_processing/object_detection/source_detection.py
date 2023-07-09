@@ -1,7 +1,9 @@
 """Functions for detecting blobs of irregular shapes.
 """
 
-from python.image_processing.object_detection.edge_detection import detect_edges_on_image
+from python.image_processing.object_detection.edge_detection import (
+    detect_edges_on_image,
+)
 from python.image_input.get_markings import get_markings
 import cv2
 
@@ -48,7 +50,7 @@ def get_center_of_source_iceberg(cropped_img, manual=True) -> int:
         max_area = 0
         max_keypoint = None
         for kp in keypoints:
-            area = kp.size ** 2 * 3.14159265
+            area = kp.size**2 * 3.14159265
             if area > max_area:
                 max_area = area
                 max_keypoint = kp
@@ -63,6 +65,6 @@ def get_center_of_source_iceberg(cropped_img, manual=True) -> int:
 
     # manually mark source center if it couldn't be found
     elif len(keypoints) < 1:
-        x1, y1, _, _ = get_markings(mark_src=True)
+        x1, y1, _, _ = get_markings(cropped_img, mark_src=True)
 
     return x1, y1

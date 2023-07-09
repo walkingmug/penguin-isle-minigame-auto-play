@@ -1,7 +1,9 @@
 """Functions for detecting blobs of regular shape.
 """
 
-from python.image_processing.object_detection.edge_detection import detect_edges_on_image
+from python.image_processing.object_detection.edge_detection import (
+    detect_edges_on_image,
+)
 from python.image_input.get_markings import get_markings
 import cv2
 
@@ -40,7 +42,7 @@ def get_center_of_destination_iceberg(cropped_img, manual=True) -> int:
     if manual:
         _, _, x2, y2 = get_markings(cropped_img, mark_dest=True)
         return x2, y2
-    
+
     # detect blobs with custom parameters
     img = detect_edges_on_image(cropped_img)
     params = get_destination_blob_params()
@@ -49,7 +51,7 @@ def get_center_of_destination_iceberg(cropped_img, manual=True) -> int:
 
     # manually mark destination center if it is not found
     if len(keypoints) != 1:
-        _, _, x2, y2 = get_markings(mark_dest=True)
+        _, _, x2, y2 = get_markings(cropped_img, mark_dest=True)
     else:
         x2 = int(keypoints[0].pt[0])
         y2 = int(keypoints[0].pt[1])

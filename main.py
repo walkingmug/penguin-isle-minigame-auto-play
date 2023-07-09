@@ -1,13 +1,24 @@
 from python.image_input.get_image_from_software import get_image_from_software
 from python.image_input.get_markings import get_markings
-from python.distance_calculator.calculate_distance import get_euclidean_distance, get_straight_distance
-from python.distance_calculator.convert_distance_to_push import get_push_duration_from_distance
+from python.distance_calculator.calculate_distance import (
+    get_euclidean_distance,
+    get_straight_distance,
+)
+from python.distance_calculator.convert_distance_to_push import (
+    get_push_duration_from_distance,
+)
 from python.arduino_serial_operations.serial_operations import ArduinoSerial
-from python.image_processing.object_detection.source_detection import get_center_of_source_iceberg
-from python.image_processing.object_detection.destination_detection import get_center_of_destination_iceberg
+from python.image_processing.object_detection.source_detection import (
+    get_center_of_source_iceberg,
+)
+from python.image_processing.object_detection.destination_detection import (
+    get_center_of_destination_iceberg,
+)
 from python.image_input.screenshot_frame import ScreenshotFrame
 from python.gui.app import ImageDisplayGUI
-from python.distance_calculator.convert_pixel_to_percent import convert_pixel_dist_to_percent_dist
+from python.distance_calculator.convert_pixel_to_percent import (
+    convert_pixel_dist_to_percent_dist,
+)
 import time
 import numpy as np
 from cv2 import imread
@@ -23,13 +34,13 @@ def main() -> None:
         # save a screenshot image from a given software
         screenshot = get_image_from_software("Zoom - Google Chrome")
         screenshot = imread("temp/screenshots/screenshot.png")
-    
+
         # automatically detect source and destination on image
         # if it cannot be detected, manually ask the user to input them
         screen_img.get_screen_img(screenshot)
         frame = screen_img.get_frame()
-        screen_img.find_source()
-        screen_img.find_destination()
+        screen_img.find_source(manual=False)
+        screen_img.find_destination(manual=False)
         screen_img.update_frame_with_src_and_dest()
         screen_img.display_frame()
 
@@ -41,7 +52,12 @@ def main() -> None:
 
         # calculate the distance between the two marks
         x1, y1, x2, y2 = convert_pixel_dist_to_percent_dist(
-            screen_img.x_src, screen_img.y_src, screen_img.x_dest, screen_img.y_dest, frame)
+            screen_img.x_src,
+            screen_img.y_src,
+            screen_img.x_dest,
+            screen_img.y_dest,
+            frame,
+        )
         distance_between_marks = get_euclidean_distance(x1, y1, x2, y2)
         # distance_between_marks = get_straight_distance(x1, y1, x2, y2)
         print(f"Distance: {distance_between_marks}")

@@ -2,7 +2,6 @@ from python.image_input.get_image_from_software import get_image_from_software
 from python.image_input.get_markings import get_markings
 from python.distance_calculator.calculate_distance import (
     get_euclidean_distance,
-    get_straight_distance,
 )
 from python.distance_calculator.convert_distance_to_push import (
     get_push_duration_from_distance,
@@ -17,7 +16,7 @@ from python.image_processing.object_detection.destination_detection import (
 from python.image_input.screenshot_frame import ScreenshotFrame
 from python.gui.app import ImageDisplayGUI
 from python.distance_calculator.convert_pixel_to_percent import (
-    convert_pixel_dist_to_percent_dist,
+    convert_pixel_to_percent_position,
 )
 import time
 import numpy as np
@@ -58,12 +57,14 @@ def main() -> None:
         # gui.root.update()
 
         # calculate the distance between the two marks
-        x1, y1, x2, y2 = convert_pixel_dist_to_percent_dist(
+        frame_height, frame_width, _ = frame.shape
+        x1, y1, x2, y2 = convert_pixel_to_percent_position(
             screen_img.x_src,
             screen_img.y_src,
             screen_img.x_dest,
             screen_img.y_dest,
-            frame,
+            frame_height,
+            frame_width,
         )
         distance_between_marks = get_euclidean_distance(x1, y1, x2, y2)
         # distance_between_marks = get_straight_distance(x1, y1, x2, y2)

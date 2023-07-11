@@ -5,7 +5,7 @@ import numpy as np
 from cv2 import circle
 
 
-def draw_mark(frame: np.array, x: int, y: int, color_name='red'):
+def draw_mark(frame: np.array, x: int, y: int, color_name="red"):
     """Draws a mark on an image (destination mark).
 
     :param frame: The image for the mark to appear on
@@ -14,18 +14,12 @@ def draw_mark(frame: np.array, x: int, y: int, color_name='red'):
     :return: The frame with the mark
     """
     # convert color name to cv2 color tuple
-    color_map = {
-    'red': (0, 0, 255),
-    'green': (0, 255, 0),
-    'blue': (255, 0, 0)
-    }
+    color_map = {"red": (0, 0, 255), "green": (0, 255, 0), "blue": (255, 0, 0)}
     if color_name in color_map:
         color_tuple = color_map[color_name]
-    
+
     # draw mark
-    frame = circle(
-        frame, center=(x, y), radius=3, color=color_tuple, thickness=-1)
-    frame = circle(
-        frame, center=(x, y), radius=3, color=(0, 0, 0), thickness=1)
-    
+    frame = circle(frame, center=(x, y), radius=3, color=color_tuple, thickness=-1)
+    frame = circle(frame, center=(x, y), radius=3, color=(0, 0, 0), thickness=1)
+
     return frame

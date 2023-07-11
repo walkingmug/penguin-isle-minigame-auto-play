@@ -1,7 +1,9 @@
 import numpy as np
 
 
-def convert_pixel_dist_to_percent_dist(x1: int, y1: int, x2: int, y2: int, frame: np.array) -> float:
+def convert_pixel_dist_to_percent_dist(
+    x1: int, y1: int, x2: int, y2: int, frame: np.array
+) -> float:
     """Computes the percentage distance of two marks on the image.
 
     :param x1: Pixel number for mark 1 on x-axis
@@ -13,9 +15,9 @@ def convert_pixel_dist_to_percent_dist(x1: int, y1: int, x2: int, y2: int, frame
     """
     height, width, _ = frame.shape
 
-    x1_percent = x1/width
-    y1_percent = y1/height
-    x2_percent = x2/width
-    y2_percent = y2/height
+    x1_percent = x1 / width
+    y1_percent = y1 / height
+    x2_percent = x2 / width
+    y2_percent = y2 / height
 
     return x1_percent, y1_percent, x2_percent, y2_percent

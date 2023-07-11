@@ -16,18 +16,18 @@ y2 = None
 def click_event(event, x, y, flags, params) -> None:
     """Checks for left mouse clicks and stops after two clicks
 
-    :param event: _description_
-    :param x: _description_
-    :param y: _description_
-    :param flags: _description_
-    :param params: _description_
+    :param event: The type of mouse event (e.g. left mouse down)
+    :param x: x-coordinate of pointer at event occurence
+    :param y: y-coordinate of pointer at event occurence
+    :param flags: Additional events (e.g. CTRL key pressed)
+    :param params: Additional parameters
     """
     global click_type
     global x1, y1, x2, y2
     global img
     global img_title
 
-    # Get click coordinates and stop after two clicks
+    # get click coordinates and stop after two clicks
     if event == cv2.EVENT_LBUTTONDOWN:
         if click_type == "src":
             x1 = x

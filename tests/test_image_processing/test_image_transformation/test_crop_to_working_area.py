@@ -12,3 +12,22 @@ def test_can_crop_out_irrelevant_areas():
     assert (
         result.all() == expected_result.all()
     ), "Could not properly crop out irrelevant image parts."
+
+
+def test_can_extract_screenshare_from_full_screenshot():
+    img = numpy.random.rand(50, 50, 3)
+
+    # create green square outline
+    img[10:12, 20:30] = [0, 200, 75]  # top horizontal green line
+    img[30:32, 20:30] = [0, 200, 75]  # bottom horizontal green line
+    img[10:32, 20:22] = [0, 200, 75]  # left vertical green line
+    img[10:32, 30:32] = [0, 200, 75]  # right vertical green line
+
+    expected_result = img[
+        10:32,
+        30:32,
+    ]
+    result = crop_to_working_area.get_screenshare_from_screenshot(img)
+    assert (
+        result.all() == expected_result.all()
+    ), "Incorrect cropping out screenshare from full screenshot."

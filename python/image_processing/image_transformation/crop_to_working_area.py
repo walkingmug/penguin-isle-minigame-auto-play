@@ -14,7 +14,7 @@ def crop_out_first_and_last_quarter(img: np.array) -> np.array:
     img_height, _ = img.shape[:2]
     TOP_PART = int(img_height / 4)
     BOTTOM_PART = int(img_height - (img_height / 3))
-    crop_of_relevant_area = img[TOP_PART:BOTTOM_PART,]
+    crop_of_relevant_area = img[TOP_PART:BOTTOM_PART, :]
 
     return crop_of_relevant_area
 

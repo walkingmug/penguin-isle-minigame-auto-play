@@ -25,6 +25,7 @@ def crop_out_first_and_last_quarter(img: np.array) -> np.array:
 def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     """Crops the screenshare from the screenshot image.
 
+    :param screenshot: Full-screen screenshot to look for screenshare section
     :return: An image of the cropped screenshare
     """
     # screenshot = np.array(screenshot)
@@ -56,6 +57,7 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
 def crop_image_to_working_area(screenshot: np.array) -> np.array:
     """Extracts the working area from a screenshot.
 
+    :param screenshot: Screenshot from screenshare to crop out irrelevant parts
     :return: A cropped image of the working area.
     """
     screenshare = get_screenshare_from_screenshot(screenshot)

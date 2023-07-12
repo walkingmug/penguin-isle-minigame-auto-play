@@ -36,6 +36,8 @@ def get_destination_blob_params():
 def get_center_of_destination_iceberg(cropped_img, manual=False) -> int:
     """Finds the iceberg in the game where the character needs to travel.
 
+    :param cropped_img: Image reduced to relevant parts only.
+    :param manual: Bypass automatic detection of blobs.
     :return: The keypoint of the character, and the center position of it.
     """
     # let user manually select  destination

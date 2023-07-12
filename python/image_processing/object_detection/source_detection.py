@@ -16,7 +16,7 @@ def get_source_blob_params():
     # set up the SimpleBlobDetector with default parameters
     params = cv2.SimpleBlobDetector_Params()
 
-    # set the threshold
+    # set the threshold (opacity)
     params.minThreshold = 244
     params.maxThreshold = 255
 

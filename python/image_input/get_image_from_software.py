@@ -17,7 +17,7 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
     # Find the handle of the window
     zoom_hwnd = win32gui.FindWindow(None, window_name)
     if zoom_hwnd == 0:
-        raise ValueError(f"Window \"{window_name}\" does not exist.")
+        raise ValueError(f'Window "{window_name}" does not exist.')
 
     # Display the window
     win32gui.ShowWindow(zoom_hwnd, win32con.SW_SHOWNORMAL)
@@ -31,6 +31,6 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
     # win32gui.ShowWindow(zoom_hwnd, win32con.SW_MINIMIZE)
 
     # Save the screenshot to a file
-    screenshot.save('temp\screenshots\screenshot.png')
+    screenshot.save("temp\screenshots\screenshot.png")
 
     return screenshot

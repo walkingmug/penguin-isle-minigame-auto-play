@@ -21,7 +21,7 @@ def get_source_blob_params():
     params.maxThreshold = 255
 
     # set the convexity filter (interruption of the shape)
-    # take a lower convexity to account for the shape interruption by the character
+    # a lower convexity accounts for the shape interruption by the character
     params.filterByConvexity = True
     params.minConvexity = 0.7
     params.maxConvexity = 0.8

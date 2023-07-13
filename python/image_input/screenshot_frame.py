@@ -11,7 +11,7 @@ from python.image_processing.object_detection.destination_detection import (
     get_center_of_destination_iceberg,
 )
 from python.image_processing.feature_output import draw_blobs
-from ython.image_processing.object_detection import edge_detection
+from python.image_processing.object_detection import edge_detection
 from python.image_input.draw_markings import draw_mark
 import cv2
 import numpy as np

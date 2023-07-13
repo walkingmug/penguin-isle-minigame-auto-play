@@ -11,7 +11,6 @@ from python.image_processing.object_detection.destination_detection import (
     get_center_of_destination_iceberg,
 )
 from python.image_input.draw_markings import draw_mark
-from python.image_input.get_markings import get_markings
 import cv2
 import numpy as np
 

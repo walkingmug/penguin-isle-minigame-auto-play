@@ -11,7 +11,8 @@ from PIL import ImageGrab
 def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
     """Takes a screenshot from a software window.
 
-    :raises ValueError: If the window is not found
+    :param window_name: the name of the window that holds the screenshare
+    :raises ValueError: If the window is not found, return an error
     """
     # Find the handle of the window
     zoom_hwnd = win32gui.FindWindow(None, window_name)

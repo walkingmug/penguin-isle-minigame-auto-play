@@ -15,6 +15,7 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
     :raises ValueError: If the window is not found, return an error
     :return: A screenshot from a given software
     """
+
     # Find the handle of the window
     zoom_hwnd = win32gui.FindWindow(None, window_name)
     if zoom_hwnd == 0:

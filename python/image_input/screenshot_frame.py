@@ -11,6 +11,7 @@ from python.image_processing.object_detection.destination_detection import (
     get_center_of_destination_iceberg,
 )
 from python.image_processing.feature_output import draw_blobs
+from ython.image_processing.object_detection import edge_detection
 from python.image_input.draw_markings import draw_mark
 import cv2
 import numpy as np
@@ -49,10 +50,14 @@ class ScreenshotFrame:
             self.current_frame, self.x_dest, self.y_dest, "green"
         )
 
-    def draw_keypoints_on_frame(self):
-        self.current_frame = draw_blobs.draw_keypoint_circles(
-            self.current_frame,
+    def detect_edges(self):
+        self.edges_img = edge_detection.detect_edges_on_image(
+            self.current_frame
         )
+
+    def draw_keypoints_on_edges_img(self):
+        self.detect_edges()
+        self.edges_with_kpts = draw_blobs.draw_keypoint_circles(self.edges_img)
 
     def update_frame_with_src_and_dest(self):
         self.draw_destination_on_frame()

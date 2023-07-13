@@ -1,4 +1,4 @@
-"""Functions for performing edge detection and morphological operations on image.
+"""Functions for performing image edge detection and morphological operations.
 """
 
 import cv2
@@ -12,7 +12,7 @@ def dilate_edges(edges_img: np.array) -> np.array:
     :return: Image with dilated edges
     """
     # perform dilation to complete circles
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (4,4))
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (4, 4))
     edges_img = cv2.dilate(edges_img, kernel, iterations=1)
 
     return edges_img

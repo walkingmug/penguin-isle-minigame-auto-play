@@ -11,6 +11,7 @@ def crop_out_first_and_last_quarter(img: np.array) -> np.array:
     :param img: Source image to be cropped
     :return: The image with the cropped first and fourth quarter of the y-axis
     """
+
     img_height, _ = img.shape[:2]
     TOP_PART = int(img_height / 4)
     BOTTOM_PART = int(img_height - (img_height / 3))
@@ -25,6 +26,7 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     :param screenshot: Full-screen screenshot to look for screenshare section
     :return: An image of the cropped screenshare
     """
+
     # create black and white mask based on green color channel bounds
     LOWER_BOUND = (0, 195, 70)
     UPPER_BOUND = (0, 205, 80)
@@ -51,6 +53,7 @@ def crop_image_to_working_area(screenshot: np.array) -> np.array:
     :param screenshot: Screenshot from screenshare to crop out irrelevant parts
     :return: A cropped image of the working area.
     """
+
     screenshare = get_screenshare_from_screenshot(screenshot)
     working_area = crop_out_first_and_last_quarter(screenshare)
 

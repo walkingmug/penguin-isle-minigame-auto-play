@@ -26,7 +26,4 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
     (left, top, right, bottom) = win32gui.GetWindowRect(zoom_hwnd)
     screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
 
-    # Minimize the window
-    # win32gui.ShowWindow(zoom_hwnd, win32con.SW_MINIMIZE)
-
     return screenshot

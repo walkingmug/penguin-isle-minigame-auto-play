@@ -51,13 +51,12 @@ class ScreenshotFrame:
         )
 
     def detect_edges(self):
-        self.edges_img = edge_detection.detect_edges_on_image(
-            self.current_frame
-        )
+        return edge_detection.detect_edges_on_image(self.current_frame)
 
     def draw_keypoints_on_edges_img(self):
-        self.detect_edges()
-        self.edges_with_kpts = draw_blobs.draw_keypoint_circles(self.edges_img)
+        self.edges_with_kpts = draw_blobs.draw_keypoint_circles(
+            self.detect_edges()
+        )
 
     def update_frame_with_src_and_dest(self):
         self.draw_destination_on_frame()

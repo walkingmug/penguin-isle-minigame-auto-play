@@ -1,4 +1,4 @@
-"""Classes for capturing screenshots and performing image processing. 
+"""Classes for capturing screenshots and performing image processing.
 """
 
 from python.image_processing.image_transformation.crop_to_working_area import (

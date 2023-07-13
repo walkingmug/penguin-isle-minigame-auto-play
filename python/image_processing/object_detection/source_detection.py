@@ -69,4 +69,6 @@ def get_center_of_source_iceberg(cropped_img, manual=False) -> int:
     elif len(keypoints) < 1:
         x1, y1, _, _ = get_markings(cropped_img, mark_src=True)
 
+    if len(keypoints) > 0:
+        return keypoints, x1, y1
     return x1, y1

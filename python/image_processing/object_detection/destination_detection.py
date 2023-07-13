@@ -61,4 +61,4 @@ def get_center_of_destination_iceberg(cropped_img, manual=False) -> int:
         x2 = int(keypoints[0].pt[0])
         y2 = int(keypoints[0].pt[1])
 
-    return x2, y2, keypoints
+    return x2, y2, keypoints[0]

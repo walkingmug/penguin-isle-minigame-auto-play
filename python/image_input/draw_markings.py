@@ -13,6 +13,7 @@ def draw_mark(frame: np.array, x: int, y: int, color_name="red"):
     :param y: Y-position of the desired mark
     :return: The frame with the mark
     """
+
     # convert color name to cv2 color tuple
     color_map = {"red": (0, 0, 255), "green": (0, 255, 0), "blue": (255, 0, 0)}
     if color_name in color_map:

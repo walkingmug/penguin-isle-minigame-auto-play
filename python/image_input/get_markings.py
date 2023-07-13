@@ -22,6 +22,7 @@ def click_event(event, x, y, flags, params) -> None:
     :param flags: Additional events (e.g. CTRL key pressed)
     :param params: Additional parameters
     """
+
     global click_type
     global x1, y1, x2, y2
     global img
@@ -56,6 +57,7 @@ def get_markings(cropped_img, mark_src=False, mark_dest=False) -> int:
     :return: The x-y coordinates of source and destination marks. If either
     is False, returns None value for it
     """
+
     global img
     global click_type
     global img_title

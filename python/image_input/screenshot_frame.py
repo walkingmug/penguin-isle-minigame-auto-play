@@ -58,7 +58,7 @@ class ScreenshotFrame:
         return edge_detection.detect_edges_on_image(self.current_frame)
 
     def get_keypoints_on_edges_img(self):
-        return draw_blobs.draw_keypoint_circles(
+        self.edges_with_kpts = draw_blobs.draw_keypoint_circles(
             self.detect_edges(), self.kpt_src, self.kpt_dest
         )
 
@@ -72,4 +72,5 @@ class ScreenshotFrame:
     def display_frame(self):
         cv2.destroyAllWindows()
         cv2.imshow("Screenshot", self.current_frame)
+        cv2.imshow("Keypoints", self.edges_with_kpts)
         cv2.waitKey(0)

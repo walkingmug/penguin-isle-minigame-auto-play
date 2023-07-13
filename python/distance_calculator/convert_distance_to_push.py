@@ -8,6 +8,7 @@ def get_push_duration_from_distance(percent_distance) -> float:
     :param percent_distance: Euclidean percent distance between the two marks
     :return: Push duration in seconds for the servo to push
     """
+
     DURATION_FORMULA = 0.95
     push_duration = round((percent_distance * DURATION_FORMULA), 2)
 

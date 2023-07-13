@@ -31,12 +31,16 @@ class ScreenshotFrame:
         # "temp/screenshots/crop_of_relevant_area.jpg")
 
     def find_source(self, manual=False):
-        self.x_src, self.y_src = get_center_of_source_iceberg(
+        self.x_src, self.y_src, self.kpt_src = get_center_of_source_iceberg(
             self.current_frame, manual=manual
         )
 
     def find_destination(self, manual=False):
-        self.x_dest, self.y_dest = get_center_of_destination_iceberg(
+        (
+            self.x_dest,
+            self.y_dest,
+            self.kpt_dest,
+        ) = get_center_of_destination_iceberg(
             self.current_frame, manual=manual
         )
 
@@ -53,9 +57,9 @@ class ScreenshotFrame:
     def detect_edges(self):
         return edge_detection.detect_edges_on_image(self.current_frame)
 
-    def draw_keypoints_on_edges_img(self):
-        self.edges_with_kpts = draw_blobs.draw_keypoint_circles(
-            self.detect_edges()
+    def get_keypoints_on_edges_img(self):
+        return draw_blobs.draw_keypoint_circles(
+            self.detect_edges(), self.kpt_src, self.kpt_dest
         )
 
     def update_frame_with_src_and_dest(self):

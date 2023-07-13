@@ -29,7 +29,4 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
     # Minimize the window
     # win32gui.ShowWindow(zoom_hwnd, win32con.SW_MINIMIZE)
 
-    # Save the screenshot to a file
-    screenshot.save("temp\screenshots\screenshot.png")
-
     return screenshot

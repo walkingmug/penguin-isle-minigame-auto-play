@@ -13,6 +13,7 @@ def get_source_blob_params():
 
     :return: The blob detector with modified parameters
     """
+
     # set up the SimpleBlobDetector with default parameters
     params = cv2.SimpleBlobDetector_Params()
 
@@ -34,6 +35,7 @@ def get_center_of_source_iceberg(cropped_img, manual=False) -> int:
 
     :return: The keypoint of the character, and the center position of it.
     """
+
     # let user manually select source and destination
     if manual:
         x1, y1, _, _ = get_markings(cropped_img, mark_src=True)

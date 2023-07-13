@@ -6,10 +6,10 @@ import time
 
 
 class ArduinoSerial:
-    """Configures Arduino connection and communicates movements to the servo.
-    """
+    """Configures Arduino connection and sends movements to the servo."""
+
     def __init__(self):
-        self.ser = Serial(port='COM3', baudrate=9600)
+        self.ser = Serial(port="COM3", baudrate=9600)
         time.sleep(2)
 
     def set_port(self, port: str):
@@ -19,10 +19,10 @@ class ArduinoSerial:
         self.ser.baudrate = baud_rate
 
     def _move_servo_down(self):
-        self.ser.write(b'1')
+        self.ser.write(b"1")
 
     def _move_servo_up(self):
-        self.ser.write(b'0')
+        self.ser.write(b"0")
 
     def move_servo(self, duration: float):
         self._move_servo_down()

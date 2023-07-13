@@ -48,7 +48,14 @@ def click_event(event, x, y, flags, params) -> None:
 
 
 def get_markings(cropped_img, mark_src=False, mark_dest=False) -> int:
-    """Lets the user input two marks on the image."""
+    """Lets the user input two marks on the image.
+
+    :param cropped_img: An image reduced to relevant area only
+    :param mark_src: Mark the source point (from)
+    :param mark_dest: Mark the destination point (to)
+    :return: The x-y coordinates of source and destination marks. If either
+    is False, returns None value for it
+    """
     global img
     global click_type
     global img_title

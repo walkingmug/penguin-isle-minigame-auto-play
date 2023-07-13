@@ -55,7 +55,7 @@ def get_center_of_source_iceberg(cropped_img, manual=False) -> int:
             area = kp.size**2 * 3.14159265
             if area > max_area:
                 max_area = area
-                max_keypoint = kp
+                max_keypoint = [kp]
         x1 = int(max_keypoint.pt[0])
         y1 = int(max_keypoint.pt[1])
     elif len(keypoints) == 1:
@@ -68,4 +68,4 @@ def get_center_of_source_iceberg(cropped_img, manual=False) -> int:
         x1, y1, _, _ = get_markings(cropped_img, mark_src=True)
         max_keypoint = None
 
-    return x1, y1, [max_keypoint]
+    return x1, y1, max_keypoint

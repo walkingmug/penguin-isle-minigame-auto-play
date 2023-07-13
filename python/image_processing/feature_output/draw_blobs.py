@@ -1,14 +1,5 @@
 import cv2
 import numpy as np
-from python.image_processing.object_detection.edge_detection import (
-    get_edges_from_image,
-)
-from python.image_processing.object_detection.source_detection import (
-    get_center_of_source_iceberg,
-)
-from python.image_processing.object_detection.destination_detection import (
-    get_center_of_destination_iceberg,
-)
 
 
 def draw_source_and_destination(

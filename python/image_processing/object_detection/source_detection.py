@@ -68,4 +68,4 @@ def get_center_of_source_iceberg(cropped_img, manual=False) -> int:
         x1, y1, _, _ = get_markings(cropped_img, mark_src=True)
         max_keypoint = None
 
-    return x1, y1, max_keypoint
+    return x1, y1, [max_keypoint]

@@ -47,6 +47,7 @@ def main() -> None:
         frame = screen_img.get_frame()
         screen_img.find_source(manual=False)
         screen_img.find_destination(manual=False)
+        screen_img.get_keypoints_on_edges_img()
         screen_img.update_frame_with_src_and_dest()
         screen_img.display_frame()
 

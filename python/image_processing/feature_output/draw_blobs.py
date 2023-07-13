@@ -2,9 +2,7 @@ import cv2
 import numpy as np
 
 
-def draw_keypoint_circles(
-    src_img: np.array, src_kpts, src_center: list, dest_kpts, dest_center: list
-) -> None:
+def draw_keypoint_circles(src_img: np.array, src_kpts, dest_kpts) -> None:
     # draw the source blob as red
     img_with_keypoints = cv2.drawKeypoints(
         src_img,

@@ -3,6 +3,14 @@ import numpy as np
 
 
 def draw_keypoint_circles(src_img: np.array, src_kpts, dest_kpts) -> cv2.UMat:
+    """Draws circles from keypoints around previously-found objects.
+
+    :param src_img: Image to draw circles on
+    :param src_kpts: The data for drawind the source circle
+    :param dest_kpts: The data for drawing the destination circle
+    :return: Image with drawn circles
+    """
+
     # draw the source blob as red
     img_has_src_kpts = cv2.drawKeypoints(
         src_img,

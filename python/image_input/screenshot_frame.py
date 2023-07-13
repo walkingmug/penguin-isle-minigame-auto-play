@@ -10,6 +10,7 @@ from python.image_processing.object_detection.source_detection import (
 from python.image_processing.object_detection.destination_detection import (
     get_center_of_destination_iceberg,
 )
+from python.image_processing.feature_output import draw_blobs
 from python.image_input.draw_markings import draw_mark
 import cv2
 import numpy as np
@@ -46,6 +47,11 @@ class ScreenshotFrame:
     def draw_destination_on_frame(self):
         self.current_frame = draw_mark(
             self.current_frame, self.x_dest, self.y_dest, "green"
+        )
+
+    def draw_keypoints_on_frame(self):
+        self.current_frame = draw_blobs.draw_keypoint_circles(
+            self.current_frame,
         )
 
     def update_frame_with_src_and_dest(self):

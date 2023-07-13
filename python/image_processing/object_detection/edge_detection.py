@@ -11,6 +11,7 @@ def dilate_edges(edges_img: np.array) -> np.array:
     :param edges_img: Image with detected edges
     :return: Image with dilated edges
     """
+
     # perform dilation to complete circles
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (4, 4))
     edges_img = cv2.dilate(edges_img, kernel, iterations=1)
@@ -23,6 +24,7 @@ def detect_edges_on_image(cropped_img) -> np.array:
 
     :return: A b&w image with the edges in white and background in black.
     """
+
     # convert image to grayscale
     cropped_img = cv2.cvtColor(cropped_img, cv2.COLOR_BGR2GRAY)
 

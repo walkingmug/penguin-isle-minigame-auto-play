@@ -1,3 +1,6 @@
+"""Draws circles around found objects.
+"""
+
 import cv2
 import numpy as np
 

@@ -56,8 +56,9 @@ def get_center_of_destination_iceberg(cropped_img, manual=False) -> int:
     # manually mark destination center if it is not found
     if len(keypoints) != 1:
         _, _, x2, y2 = get_markings(cropped_img, mark_dest=True)
+        keypoints = None
     else:
         x2 = int(keypoints[0].pt[0])
         y2 = int(keypoints[0].pt[1])
 
-    return x2, y2
+    return x2, y2, keypoints

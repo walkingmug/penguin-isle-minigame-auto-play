@@ -20,8 +20,3 @@ def draw_keypoint_circles(src_img: np.array, src_kpts, dest_kpts) -> None:
         (0, 255, 0),
         cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS,
     )
-
-    # show the image with the source and destination blobs
-    cv2.imshow("Blobs", img_with_keypoints)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()

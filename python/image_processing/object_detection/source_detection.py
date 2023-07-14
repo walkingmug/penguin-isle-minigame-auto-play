@@ -24,7 +24,7 @@ def get_source_blob_params():
     # set the convexity filter (interruption of the shape)
     # a lower convexity accounts for the shape interruption by the character
     params.filterByConvexity = True
-    params.minConvexity = 0.7
+    params.minConvexity = 0.4
     params.maxConvexity = 0.8
 
     return params

@@ -22,6 +22,7 @@ def test_can_detect_simple_blob(monkeypatch):
     (
         result_x,
         result_y,
+        _,
     ) = destination_detection.get_center_of_destination_iceberg(
         circle_img, manual=False
     )

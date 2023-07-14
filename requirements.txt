@@ -11,4 +11,3 @@ platformdirs==3.8.1
 pluggy==1.2.0
 pyserial==3.5
 pytest==7.4.0
-pywin32==306

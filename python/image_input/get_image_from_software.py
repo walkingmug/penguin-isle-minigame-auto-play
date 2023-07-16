@@ -23,7 +23,7 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
 
     # Display the window
     win32gui.ShowWindow(zoom_hwnd, win32con.SW_SHOWNORMAL)
-    time.sleep(20)
+    time.sleep(5)
 
     # Get the coordinates of the window and take a screenshot
     (left, top, right, bottom) = win32gui.GetWindowRect(zoom_hwnd)

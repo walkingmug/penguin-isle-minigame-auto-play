@@ -27,8 +27,6 @@ class ScreenshotFrame:
 
     def get_screen_img(self, screenshot: np.array):
         self.current_frame = crop_image_to_working_area(screenshot)
-        # self.current_frame = cv2.imread(
-        # "temp/screenshots/crop_of_relevant_area.jpg")
 
     def find_source(self, manual=False):
         self.x_src, self.y_src, self.kpt_src = get_center_of_source_iceberg(

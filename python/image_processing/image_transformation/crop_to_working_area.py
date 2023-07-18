@@ -30,7 +30,7 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     # create black and white mask based on green color channel bounds
     LOWER_BOUND = (0, 195, 70)
     UPPER_BOUND = (0, 205, 80)
-    bw_mask = cv2.inRange(np.float32(screenshot), LOWER_BOUND, UPPER_BOUND)
+    bw_mask = cv2.inRange(np.asarray(screenshot), LOWER_BOUND, UPPER_BOUND)
 
     # get the diagonal endpoints of the white mask
     white_loc_in_mask = np.where(bw_mask == 255)

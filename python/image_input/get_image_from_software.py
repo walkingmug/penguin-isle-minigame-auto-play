@@ -27,6 +27,9 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
 
     # Get the coordinates of the window and take a screenshot
     (left, top, right, bottom) = win32gui.GetWindowRect(zoom_hwnd)
-    screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
+    PADDING = 500
+    screenshot = ImageGrab.grab(
+        bbox=(left, top, right + PADDING, bottom + PADDING)
+    )
 
     return screenshot

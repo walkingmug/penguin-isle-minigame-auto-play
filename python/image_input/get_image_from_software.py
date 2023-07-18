@@ -5,6 +5,7 @@ import win32gui
 import win32con
 import time
 import PIL.Image
+from PIL import ImageGrab
 
 
 def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:

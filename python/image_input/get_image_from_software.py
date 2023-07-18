@@ -22,7 +22,7 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
         raise ValueError(f'Window "{window_name}" does not exist.')
 
     # Display the window
-    win32gui.ShowWindow(zoom_hwnd, win32con.SW_SHOWNORMAL)
+    win32gui.ShowWindow(zoom_hwnd, win32con.SW_MAXIMIZE)
     time.sleep(5)
 
     # Get the coordinates of the window and take a screenshot

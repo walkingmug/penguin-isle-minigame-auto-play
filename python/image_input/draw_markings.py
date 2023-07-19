@@ -2,7 +2,7 @@
 """
 
 import numpy as np
-from cv2 import circle
+import cv2
 
 
 def draw_mark(frame: np.array, x: int, y: int, color_name="red"):
@@ -20,11 +20,15 @@ def draw_mark(frame: np.array, x: int, y: int, color_name="red"):
         color_tuple = color_map[color_name]
 
     # draw mark
-    frame = circle(
-        frame, center=(x, y), radius=3, color=color_tuple, thickness=-1
+    frame = cv2.circle(
+        cv2.UMat(frame),
+        center=(x, y),
+        radius=3,
+        color=color_tuple,
+        thickness=-1,
     )
-    frame = circle(
-        frame, center=(x, y), radius=3, color=(0, 0, 0), thickness=1
+    frame = cv2.ACCESS_WRITEcircle(
+        cv2.UMat(frame), center=(x, y), radius=3, color=(0, 0, 0), thickness=1
     )
 
     return frame

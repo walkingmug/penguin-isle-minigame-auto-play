@@ -5,6 +5,7 @@ import win32gui
 import win32con
 import time
 import PIL.Image
+import numpy as np
 from PIL import ImageGrab
 
 
@@ -22,11 +23,19 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
         raise ValueError(f'Window "{window_name}" does not exist.')
 
     # Display the window
-    win32gui.ShowWindow(zoom_hwnd, win32con.SW_SHOWNORMAL)
+    win32gui.ShowWindow(zoom_hwnd, win32con.SW_MAXIMIZE)
     time.sleep(5)
 
     # Get the coordinates of the window and take a screenshot
     (left, top, right, bottom) = win32gui.GetWindowRect(zoom_hwnd)
-    screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
+    PADDING = 500
+    screenshot = ImageGrab.grab(
+        bbox=(left, top, right + PADDING, bottom + PADDING)
+    )
+    screenshot.thumbnail((1000, 1000))
+
+    # convert to numpy array for compatibility with other functions
+    screenshot = np.asarray(screenshot)
+    screenshot = screenshot[:, :, ::-1]
 
     return screenshot

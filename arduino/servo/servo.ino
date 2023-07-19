@@ -11,7 +11,7 @@ void setup(){
   pinMode(greenLedPin, OUTPUT);
   pinMode(redLedPin, OUTPUT);
   myservo.attach(servoPin); // if using different PIN, change the number
-  myservo.write(0); // move servo to center position (90 degrees)
+  myservo.write(servoUp); // move servo to center position (90 degrees)
   digitalWrite(greenLedPin, LOW);
   digitalWrite(redLedPin, HIGH); // turn on red LED
   Serial.begin(9600); // for reading instructions to move servo

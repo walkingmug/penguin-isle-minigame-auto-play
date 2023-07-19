@@ -5,6 +5,7 @@ import win32gui
 import win32con
 import time
 import PIL.Image
+import numpy as np
 from PIL import ImageGrab
 
 
@@ -32,5 +33,9 @@ def get_image_from_software(window_name="Zoom - Google Chrome") -> PIL.Image:
         bbox=(left, top, right + PADDING, bottom + PADDING)
     )
     screenshot.thumbnail((1000, 1000))
+
+    # convert to numpy array for compatibility with other functions
+    screenshot = np.asarray(screenshot)
+    screenshot = screenshot[:, :, ::-1]
 
     return screenshot

@@ -30,11 +30,9 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     # create black and white mask based on green color channel bounds
     LOWER_BOUND = (5, 120, 30)  # BGR
     UPPER_BOUND = (30, 180, 90)  # BGR
-    image_array = np.asarray(screenshot)
-    image_array = image_array[:, :, ::-1]
-    bw_mask = cv2.inRange(image_array, LOWER_BOUND, UPPER_BOUND)
+    bw_mask = cv2.inRange(screenshot, LOWER_BOUND, UPPER_BOUND)
     cv2.imshow("bw", bw_mask)
-    cv2.imshow("reg", image_array)
+    cv2.imshow("reg", screenshot)
     cv2.waitKey(0)
 
     # get the diagonal endpoints of the white mask
@@ -47,7 +45,7 @@ def get_screenshare_from_screenshot(screenshot: np.array) -> np.array:
     )
 
     # crop the image at the bounds
-    crop_of_screenshare = image_array[ymin:ymax, xmin:xmax]
+    crop_of_screenshare = screenshot[ymin:ymax, xmin:xmax]
     cv2.imshow("im", crop_of_screenshare)
     cv2.waitKey(0)
     return crop_of_screenshare

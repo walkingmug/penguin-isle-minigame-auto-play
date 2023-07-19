@@ -2,7 +2,7 @@
 
 ## Description
 
-This program tries to automatically detect two blobs (circular objects) in images, to find their center and find the Euclidean distance between the two. It converts the distance into seconds and perform movments on an Arduino servo motor. 
+This program tries to automatically detect two blobs (circular objects) in an image, to find their center and find the Euclidean distance between the two. It converts the distance into seconds and perform movments on an Arduino servo motor. 
 
 This is aimed at video games that require pressing, holding and releasing to move from one object to another (e.g. the Jump Jump minigame ([YouTube](https://www.youtube.com/watch?v=C_E0wuMuVb4&pp=ygUWcGVuZ3VpbiBpc2xlIGp1bXAganVtcA%3D%3D)) which is part of the Penguin Isle mobile game ([iOS](https://apps.apple.com/hr/app/penguin-isle/id1474314811), [Android](https://play.google.com/store/apps/details?id=com.fantome.penguinisle&hl=en_US))).
 

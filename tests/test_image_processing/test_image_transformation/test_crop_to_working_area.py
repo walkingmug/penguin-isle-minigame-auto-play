@@ -18,10 +18,10 @@ def test_can_extract_screenshare_from_full_screenshot():
     img = numpy.random.rand(50, 50, 3)
 
     # create green square outline
-    img[10:12, 20:30] = [0, 200, 75]  # top horizontal green line
-    img[30:32, 20:30] = [0, 200, 75]  # bottom horizontal green line
-    img[10:32, 20:22] = [0, 200, 75]  # left vertical green line
-    img[10:32, 30:32] = [0, 200, 75]  # right vertical green line
+    img[10:12, 20:30] = [10, 150, 50]  # top horizontal green line
+    img[30:32, 20:30] = [10, 150, 50]  # bottom horizontal green line
+    img[10:32, 20:22] = [10, 150, 50]  # left vertical green line
+    img[10:32, 30:32] = [10, 150, 50]  # right vertical green line
 
     expected_result = img[
         10:32,

@@ -19,16 +19,19 @@ void setup(){
 void loop(){
   if (Serial.available() > 0){
     int incomingString = Serial.read(); // read the incoming string
+    // move servo down
     if (incomingString == '1'){
       myservo.write(servoDown);
       digitalWrite(greenLedPin, HIGH);
       digitalWrite(redLedPin, LOW);
     }
+    // move servo up
     if (incomingString == '0'){
       myservo.write(servoUp);
       digitalWrite(greenLedPin, LOW);
       digitalWrite(redLedPin, HIGH);
     }
+    // do nothing
     else{
       digitalWrite(greenLedPin, LOW);
       digitalWrite(redLedPin, LOW);

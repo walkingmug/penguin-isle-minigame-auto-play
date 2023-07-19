@@ -1,4 +1,4 @@
-# Auto-play for the Jump Jump minigame in Penguin Isle mobile game
+# Automated Blob Detection and Servo Control for Video Game Movements (Arduino + Image Processing)
 
 ## Description
 
